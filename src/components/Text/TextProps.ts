@@ -1,18 +1,14 @@
-import {TextProps as RNTextProps} from 'react-native';
+import {createText} from '@shopify/restyle';
+import {Theme} from '../../theme/theme';
+import {TextPresets} from './TextPresets';
 
-export interface TextProps extends RNTextProps {
-  preset?: TextVariants;
+export const SRText = createText<Theme>();
+
+type SRTextProps = React.ComponentProps<typeof SRText>;
+
+export interface TextProps extends SRTextProps {
+  preset?: TextPresets;
   bold?: boolean;
   italic?: boolean;
   semiBold?: boolean;
 }
-
-export type TextVariants =
-  | 'headingLarge'
-  | 'headingMedium'
-  | 'headingSmall'
-  | 'paragraphLarge'
-  | 'paragraphMedium'
-  | 'paragraphSmall'
-  | 'paragraphCaption'
-  | 'paragraphCaptionSmall';

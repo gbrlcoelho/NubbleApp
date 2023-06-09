@@ -1,8 +1,17 @@
 import {TextStyle} from 'react-native';
-import {TextVariants} from './TextProps';
+
+export type TextPresets =
+  | 'headingLarge'
+  | 'headingMedium'
+  | 'headingSmall'
+  | 'paragraphLarge'
+  | 'paragraphMedium'
+  | 'paragraphSmall'
+  | 'paragraphCaption'
+  | 'paragraphCaptionSmall';
 
 export const getFontFamily = (
-  preset: TextVariants,
+  preset: TextPresets,
   bold?: boolean,
   italic?: boolean,
   semiBold?: boolean,
@@ -27,7 +36,7 @@ export const getFontFamily = (
   }
 };
 
-export const $fontSizes: Record<TextVariants, TextStyle> = {
+export const $fontSizes: Record<TextPresets, TextStyle> = {
   headingLarge: {fontSize: 32, lineHeight: 38.4},
   headingMedium: {fontSize: 22, lineHeight: 26.4},
   headingSmall: {fontSize: 18, lineHeight: 23.4},

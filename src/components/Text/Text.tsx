@@ -1,7 +1,6 @@
 import React from 'react';
-import {Text as RNText} from 'react-native';
-import {TextProps} from './TextProps';
-import {$fontSizes, getFontFamily} from './TextStyles';
+import {$fontSizes, getFontFamily} from './TextPresets';
+import {SRText, TextProps} from './TextProps';
 
 export const Text = ({
   children,
@@ -10,12 +9,15 @@ export const Text = ({
   italic,
   semiBold,
   style,
-  ...rest
+  ...sRTextProps
 }: TextProps) => {
   const fontFamily = getFontFamily(preset, bold, italic, semiBold);
   return (
-    <RNText style={[$fontSizes[preset], {fontFamily}, style]} {...rest}>
+    <SRText
+      color="backgroundContrast"
+      style={[$fontSizes[preset], {fontFamily}, style]}
+      {...sRTextProps}>
       {children}
-    </RNText>
+    </SRText>
   );
 };
