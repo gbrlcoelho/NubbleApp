@@ -51,4 +51,8 @@ Nubble App is open-source and released under the [MIT License](https://github.co
 
 If you have any questions, suggestions, or feedback, please contact [Gabriel Coelho](mailto:coelhogabriel67@gmail.com). We would love to hear from you and help you with any queries related to Nubble App.
 
+## Course Information
+
+The NubbleApp project was completed as a part of [Coffstack](https://www.instagram.com/coffstack/) course.
+
 Happy networking and enjoy using Nubble App!
