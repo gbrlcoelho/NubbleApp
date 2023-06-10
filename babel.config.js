@@ -8,6 +8,8 @@ module.exports = {
         alias: {
           '@components': './src/components',
           '@theme': './src/theme/theme.ts',
+          '@icons': './src/assets/icons/index.ts',
+          '@hooks': './src/hooks/index.ts',
         },
         extensions: ['.ts', '.tsx'],
       },
