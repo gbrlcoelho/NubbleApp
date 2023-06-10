@@ -10,6 +10,7 @@ module.exports = {
           '@theme': './src/theme/theme.ts',
           '@icons': './src/assets/icons/index.ts',
           '@hooks': './src/hooks/index.ts',
+          '@screens': './src/screens/index.ts',
         },
         extensions: ['.ts', '.tsx'],
       },

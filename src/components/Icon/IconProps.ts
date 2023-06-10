@@ -1,4 +1,5 @@
 import {
+  ArrowLeftIcon,
   ArrowRightIcon,
   BellIcon,
   BellOnIcon,
@@ -32,6 +33,7 @@ export interface IconProps {
   name: IconName;
   color?: ThemeColors;
   size?: number;
+  onPress?: () => void;
 }
 
 export interface IconBase {
@@ -40,8 +42,7 @@ export interface IconBase {
 }
 
 export const iconRegistry = {
-  eyeOn: EyeOnIcon,
-  eyeOff: EyeOffIcon,
+  arrowLeftIcon: ArrowLeftIcon,
   arrowRightIcon: ArrowRightIcon,
   bellIcon: BellIcon,
   bellOnIcon: BellOnIcon,
@@ -53,6 +54,8 @@ export const iconRegistry = {
   checkIcon: CheckIcon,
   chevronRightIcon: ChevronRightIcon,
   commentIcon: CommentIcon,
+  eyeOn: EyeOnIcon,
+  eyeOff: EyeOffIcon,
   flashOffIcon: FlashOffIcon,
   flashOnIcon: FlashOnIcon,
   heartFillIcon: HeartFillIcon,
