@@ -1,30 +1,40 @@
-import {Box, Icon, Text} from '@components/index';
+import {Box, Button, Icon, Text, TextInput} from '@components/index';
 import {ThemeProvider} from '@shopify/restyle';
 import {theme} from '@theme';
 import React from 'react';
-import {SafeAreaView, View} from 'react-native';
+import {SafeAreaView} from 'react-native';
 
 export const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <SafeAreaView>
-        <View style={{paddingHorizontal: 24}}>
-          <Text preset="headingLarge" bold italic disabled>
-            Nubble
+        <Box paddingHorizontal="s24">
+          <Text preset="headingLarge" marginBottom="s8">
+            Olá!
           </Text>
-          <Box flexDirection="row" flexWrap="wrap">
-            <Icon name="heartFillIcon" color="carrotSecondary" size={50} />
-            <Icon name="arrowRightIcon" size={50} />
-            <Icon name="bookmarkFillIcon" size={50} />
-            <Icon name="cameraIcon" size={50} />
-            <Icon name="heartFillIcon" size={50} />
-            <Icon name="chatIcon" size={50} />
-            <Icon name="messageIcon" size={50} />
-            <Icon name="settingsIcon" size={50} />
-            <Icon name="trashIcon" color="carrotSecondary" size={50} />
-            <Icon name="bellOnIcon" color="carrotSecondary" size={50} />
-          </Box>
-        </View>
+          <Text preset="paragraphLarge" marginBottom="s40">
+            Digite seu e-mail e senha para entrar
+          </Text>
+          <TextInput
+            label="E-mail"
+            placeholder="Digite seu e-mail"
+            boxProps={{marginBottom: 's20'}}
+            errorMessage="E-mail inválido"
+          />
+          <TextInput
+            label="Senha"
+            placeholder="Digite sua senha"
+            secureTextEntry
+            RightComponent={<Icon name="eyeOn" color="gray2" />}
+            boxProps={{marginBottom: 's10'}}
+          />
+          <Text preset="paragraphSmall" bold color="primary">
+            Esqueci minha senha
+          </Text>
+          <Button title="Entrar" marginTop="s48" />
+
+          <Button preset="outline" title="Criar conta" marginTop="s12" />
+        </Box>
       </SafeAreaView>
     </ThemeProvider>
   );
