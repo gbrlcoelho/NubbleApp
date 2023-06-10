@@ -1,9 +1,8 @@
+import {Button, Text} from '@components/index';
 import {ThemeProvider} from '@shopify/restyle';
+import {theme} from '@theme';
 import React from 'react';
 import {SafeAreaView, View} from 'react-native';
-import {Button} from './src/components/Button/Button';
-import {Text} from './src/components/Text/Text';
-import {theme} from './src/theme/theme';
 
 export const App = () => {
   return (
