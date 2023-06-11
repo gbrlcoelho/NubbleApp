@@ -1,4 +1,4 @@
-import {Icon, TextInput} from '@components/index';
+import {Icon, TextInput} from '@components';
 import React, {useState} from 'react';
 import {PasswordInputProps} from './PasswordInputProps';
 
