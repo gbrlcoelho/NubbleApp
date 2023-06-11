@@ -1,4 +1,4 @@
-import {IconBase} from '@components/Icon/IconProps';
+import {IconBase} from '@components';
 import React from 'react';
 import {Path, Svg} from 'react-native-svg';
 
