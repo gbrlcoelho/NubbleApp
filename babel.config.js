@@ -11,6 +11,7 @@ module.exports = {
           '@icons': './src/assets/icons/index.ts',
           '@hooks': './src/hooks/index.ts',
           '@screens': './src/screens/index.ts',
+          '@routes': './src/routes/index.ts',
         },
         extensions: ['.ts', '.tsx'],
       },
