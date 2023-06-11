@@ -31,7 +31,7 @@ export const Screen = ({
               flexDirection="row"
               marginBottom="s24"
               alignItems="center">
-              <Icon name="arrowLeftIcon" color="primary" />
+              <Icon name="arrowLeft" color="primary" />
               <Text preset="paragraphMedium" semiBold marginLeft="s8">
                 Voltar
               </Text>
