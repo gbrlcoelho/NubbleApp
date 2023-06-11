@@ -3,7 +3,7 @@ export {Box, TouchableOpacityBox} from './Box/Box';
 export type {BoxProps, TouchableOpacityBoxProps} from './Box/Box';
 export {Button} from './Button/Button';
 export {Icon} from './Icon/Icon';
-export type {IconBase} from './Icon/IconProps';
+export type {IconBase, IconProps} from './Icon/IconProps';
 export {PasswordInput} from './PasswordInput/PasswordInput';
 export {Screen} from './Screen/Screen';
 export {Text} from './Text/Text';
