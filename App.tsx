@@ -1,4 +1,4 @@
-import {SignUpScreen} from '@screens';
+import {Router} from '@routes';
 import {ThemeProvider} from '@shopify/restyle';
 import {theme} from '@theme';
 import React from 'react';
@@ -8,7 +8,7 @@ export const App = () => {
   return (
     <SafeAreaProvider>
       <ThemeProvider theme={theme}>
-        <SignUpScreen />
+        <Router />
       </ThemeProvider>
     </SafeAreaProvider>
   );

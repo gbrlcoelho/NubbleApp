@@ -1,4 +1,4 @@
-import {ActivityIndicator, Text, TouchableOpacityBox} from '@components/index';
+import {ActivityIndicator, Text, TouchableOpacityBox} from '@components';
 import React from 'react';
 import {buttonPresets} from './ButtonPresets';
 import {ButtonProps} from './ButtonProps';

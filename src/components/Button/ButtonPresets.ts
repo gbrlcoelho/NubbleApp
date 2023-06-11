@@ -1,4 +1,4 @@
-import {TouchableOpacityBoxProps} from '@components/Box/Box';
+import {TouchableOpacityBoxProps} from '@components';
 import {ThemeColors} from '@theme';
 
 export type ButtonPreset = 'primary' | 'outline';

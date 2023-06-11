@@ -1,16 +1,20 @@
-import {
-  Button,
-  PasswordInput,
-  Screen,
-  Text,
-  TextInput,
-} from '@components/index';
+import {Button, PasswordInput, Screen, Text, TextInput} from '@components';
+import {useResetNavigationSuccess} from '@hooks';
 import React from 'react';
+import {SignUpScreenProps} from './SignUpScreenProps';
 
-export const SignUpScreen = () => {
+export const SignUpScreen = ({}: SignUpScreenProps) => {
+  const {reset} = useResetNavigationSuccess();
+
   const submitForm = () => {
     // TODO: implementar
+    reset({
+      title: 'Sua conta foi criada com sucesso!',
+      description: 'Agora é só fazer login na nossa plataforma',
+      icon: {name: 'checkRound', color: 'success'},
+    });
   };
+
   return (
     <Screen canGoBack scrollable>
       <Text preset="headingLarge" marginBottom="s32">
