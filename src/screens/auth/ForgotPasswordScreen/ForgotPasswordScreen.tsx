@@ -9,10 +9,13 @@ export const ForgotPasswordScreen = ({}: ForgotPasswordScreenProps) => {
   const submitForm = () => {
     // TODO: implementar
     reset({
-      title: `Enviamos as ${'\n'}instruções para seu e-mail`,
+      title: `Enviamos as instruções ${'\n'}para seu e-mail`,
       description:
         'Clique no link enviado no seu e-mail para recuperar sua senha',
-      icon: {name: 'messageRound', color: 'primary'},
+      icon: {
+        name: 'messageRound',
+        color: 'primary',
+      },
     });
   };
 
