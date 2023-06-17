@@ -1,5 +1,7 @@
-import {BoxProps} from '@components';
 import {TextStyle} from 'react-native';
+
+import {BoxProps} from '@components';
+
 import {$fontFamily, $fontSizes} from '../Text/TextPresets';
 
 export const $textInputStyle: TextStyle = {

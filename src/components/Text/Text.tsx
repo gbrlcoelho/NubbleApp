@@ -1,4 +1,5 @@
 import React from 'react';
+
 import {$fontSizes, getFontFamily} from './TextPresets';
 import {SRText, TextProps} from './TextProps';
 

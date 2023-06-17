@@ -1,3 +1,8 @@
+import React from 'react';
+
+import {zodResolver} from '@hookform/resolvers/zod';
+import {useForm} from 'react-hook-form';
+
 import {
   Button,
   FormPasswordInput,
@@ -5,11 +10,9 @@ import {
   Screen,
   Text,
 } from '@components';
-import {zodResolver} from '@hookform/resolvers/zod';
-import React from 'react';
-import {useForm} from 'react-hook-form';
-import {LoginScreenProps} from './LoginScreenProps';
+
 import {LoginSchema, loginSchema} from './loginSchema';
+import {LoginScreenProps} from './LoginScreenProps';
 
 export const LoginScreen = ({navigation}: LoginScreenProps) => {
   const {control, formState, handleSubmit} = useForm<LoginSchema>({

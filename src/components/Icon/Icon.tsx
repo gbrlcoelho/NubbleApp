@@ -1,6 +1,8 @@
-import {useAppTheme} from '@hooks';
 import React from 'react';
 import {Pressable} from 'react-native';
+
+import {useAppTheme} from '@hooks';
+
 import {IconProps, iconRegistry} from './IconProps';
 
 export const Icon = ({
