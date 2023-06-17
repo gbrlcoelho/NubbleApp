@@ -5,8 +5,3 @@ export type LoginScreenProps = NativeStackScreenProps<
   RootStackParamList,
   'LoginScreen'
 >;
-
-export type LoginFormType = {
-  email: string;
-  password: string;
-};

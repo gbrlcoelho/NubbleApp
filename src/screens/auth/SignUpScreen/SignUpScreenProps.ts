@@ -5,10 +5,3 @@ export type SignUpScreenProps = NativeStackScreenProps<
   RootStackParamList,
   'SignUpScreen'
 >;
-
-export type SignUpFormType = {
-  username: string;
-  fullName: string;
-  email: string;
-  password: string;
-};

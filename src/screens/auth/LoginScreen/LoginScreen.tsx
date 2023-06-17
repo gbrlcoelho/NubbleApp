@@ -1,10 +1,19 @@
-import {Button, PasswordInput, Screen, Text, TextInput} from '@components';
+import {
+  Button,
+  FormPasswordInput,
+  FormTextInput,
+  Screen,
+  Text,
+} from '@components';
+import {zodResolver} from '@hookform/resolvers/zod';
 import React from 'react';
-import {Controller, useForm} from 'react-hook-form';
-import {LoginFormType, LoginScreenProps} from './LoginScreenProps';
+import {useForm} from 'react-hook-form';
+import {LoginScreenProps} from './LoginScreenProps';
+import {LoginSchema, loginSchema} from './loginSchema';
 
 export const LoginScreen = ({navigation}: LoginScreenProps) => {
-  const {control, formState, handleSubmit} = useForm<LoginFormType>({
+  const {control, formState, handleSubmit} = useForm<LoginSchema>({
+    resolver: zodResolver(loginSchema),
     defaultValues: {
       email: '',
       password: '',
@@ -12,7 +21,7 @@ export const LoginScreen = ({navigation}: LoginScreenProps) => {
     mode: 'onChange',
   });
 
-  const submitForm = ({email, password}: LoginFormType) => {
+  const submitForm = ({email, password}: LoginSchema) => {
     console.log(`
       email: ${email}
       password: ${password}
@@ -35,7 +44,10 @@ export const LoginScreen = ({navigation}: LoginScreenProps) => {
       <Text preset="paragraphLarge" marginBottom="s40">
         Digite seu e-mail e senha para entrar
       </Text>
-      <Controller
+      <FormTextInput
+        label="E-mail"
+        placeholder="Digite seu e-mail"
+        boxProps={{marginBottom: 's20'}}
         control={control}
         name="email"
         rules={{
@@ -45,18 +57,12 @@ export const LoginScreen = ({navigation}: LoginScreenProps) => {
             message: 'E-mail inválido',
           },
         }}
-        render={({field, fieldState}) => (
-          <TextInput
-            label="E-mail"
-            placeholder="Digite seu e-mail"
-            boxProps={{marginBottom: 's20'}}
-            value={field.value}
-            onChangeText={field.onChange}
-            errorMessage={fieldState.error?.message}
-          />
-        )}
       />
-      <Controller
+
+      <FormPasswordInput
+        label="Senha"
+        placeholder="Digite sua senha"
+        boxProps={{marginBottom: 's10'}}
         control={control}
         name="password"
         rules={{
@@ -66,16 +72,6 @@ export const LoginScreen = ({navigation}: LoginScreenProps) => {
             message: 'Senha deve ter no mínimo 8 caracteres',
           },
         }}
-        render={({field, fieldState}) => (
-          <PasswordInput
-            label="Senha"
-            placeholder="Digite sua senha"
-            boxProps={{marginBottom: 's10'}}
-            value={field.value}
-            onChangeText={field.onChange}
-            errorMessage={fieldState.error?.message}
-          />
-        )}
       />
       <Text
         onPress={navigateToForgotPasswordScreen}
