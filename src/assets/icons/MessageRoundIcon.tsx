@@ -1,6 +1,8 @@
-import {IconBase} from '@components';
 import React from 'react';
+
 import {Circle, Path, Svg} from 'react-native-svg';
+
+import {IconBase} from '@components';
 
 export const MessageRoundIcon = ({size = 48, color = 'black'}: IconBase) => {
   return (

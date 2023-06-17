@@ -1,5 +1,7 @@
 import {createText} from '@shopify/restyle';
+
 import {Theme} from '@theme';
+
 import {TextPresets} from './TextPresets';
 
 export const SRText = createText<Theme>();

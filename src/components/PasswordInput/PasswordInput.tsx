@@ -1,5 +1,7 @@
-import {Icon, TextInput} from '@components';
 import React, {useState} from 'react';
+
+import {Icon, TextInput} from '@components';
+
 import {PasswordInputProps} from './PasswordInputProps';
 
 export const PasswordInput = (props: PasswordInputProps) => {

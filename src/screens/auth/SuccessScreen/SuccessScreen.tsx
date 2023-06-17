@@ -1,5 +1,7 @@
-import {Button, Icon, Screen, Text} from '@components';
 import React from 'react';
+
+import {Button, Icon, Screen, Text} from '@components';
+
 import {SuccessScreenProps} from './SuccessScreenProps';
 
 export const SuccessScreen = ({navigation, route}: SuccessScreenProps) => {
