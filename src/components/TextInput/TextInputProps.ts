@@ -1,5 +1,6 @@
-import {BoxProps} from '@components';
 import {TextInputProps as RNTextInputProps} from 'react-native';
+
+import {BoxProps} from '@components';
 
 export interface TextInputProps extends RNTextInputProps {
   label: string;

@@ -1,5 +1,6 @@
 import React from 'react';
 import {ScrollView, View} from 'react-native';
+
 import {ScreenContainerProps} from './ScreenContainerProps';
 
 export const ScrollViewContainer = ({

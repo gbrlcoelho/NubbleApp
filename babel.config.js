@@ -4,16 +4,15 @@ module.exports = {
     [
       'module-resolver',
       {
-        root: ['./src'],
+        root: ['.'],
         alias: {
-          '@components': './src/components/index.ts',
+          '@components': './src/components',
           '@theme': './src/theme/theme.ts',
-          '@icons': './src/assets/icons/index.ts',
-          '@hooks': './src/hooks/index.ts',
-          '@screens': './src/screens/index.ts',
-          '@routes': './src/routes/index.ts',
+          '@icons': './src/assets/icons',
+          '@hooks': './src/hooks',
+          '@screens': './src/screens',
+          '@routes': './src/routes',
         },
-        extensions: ['.ts', '.tsx'],
       },
     ],
   ],
