@@ -10,11 +10,11 @@ import {
   Screen,
   Text,
 } from '@components';
+import {AuthScreenProps} from '@routes';
 
 import {LoginSchema, loginSchema} from './loginSchema';
-import {LoginScreenProps} from './LoginScreenProps';
 
-export const LoginScreen = ({navigation}: LoginScreenProps) => {
+export const LoginScreen = ({navigation}: AuthScreenProps<'LoginScreen'>) => {
   const {control, formState, handleSubmit} = useForm<LoginSchema>({
     resolver: zodResolver(loginSchema),
     defaultValues: {

@@ -1,10 +1,12 @@
 import React from 'react';
 
 import {Button, Icon, Screen, Text} from '@components';
+import {AuthScreenProps} from '@routes';
 
-import {SuccessScreenProps} from './SuccessScreenProps';
-
-export const SuccessScreen = ({navigation, route}: SuccessScreenProps) => {
+export const SuccessScreen = ({
+  navigation,
+  route,
+}: AuthScreenProps<'SuccessScreen'>) => {
   const goBackToTheBeginning = () => {
     navigation.goBack();
   };
