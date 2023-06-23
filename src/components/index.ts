@@ -10,5 +10,6 @@ export {PasswordInput} from './PasswordInput/PasswordInput';
 export type {PasswordInputProps} from './PasswordInput/PasswordInputProps';
 export {Screen} from './Screen/Screen';
 export {Text} from './Text/Text';
+export type {TextProps} from './Text/TextProps';
 export {TextInput} from './TextInput/TextInput';
 export type {TextInputProps} from './TextInput/TextInputProps';
