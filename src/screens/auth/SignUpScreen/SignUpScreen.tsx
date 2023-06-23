@@ -11,11 +11,11 @@ import {
   Text,
 } from '@components';
 import {useResetNavigationSuccess} from '@hooks';
+import {AuthScreenProps} from '@routes';
 
 import {SignUpSchema, signUpSchema} from './signUpSchema';
-import {SignUpScreenProps} from './SignUpScreenProps';
 
-export const SignUpScreen = ({}: SignUpScreenProps) => {
+export const SignUpScreen = ({}: AuthScreenProps<'SignUpScreen'>) => {
   const {reset} = useResetNavigationSuccess();
 
   const {control, formState, handleSubmit} = useForm<SignUpSchema>({
