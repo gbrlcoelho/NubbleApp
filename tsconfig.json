@@ -8,7 +8,8 @@
       "@icons": ["src/assets/icons/index.ts"],
       "@hooks": ["src/hooks/index.ts"],
       "@screens": ["src/screens/index.ts"],
-      "@routes": ["src/routes/index.ts"]
+      "@routes": ["src/routes/index.ts"],
+      "@domain": ["src/domain/index.ts"]
     }
   }
 }
