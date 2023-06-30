@@ -8,6 +8,7 @@ export {Icon} from './Icon/Icon';
 export type {IconBase, IconProps} from './Icon/IconProps';
 export {PasswordInput} from './PasswordInput/PasswordInput';
 export type {PasswordInputProps} from './PasswordInput/PasswordInputProps';
+export {PostItem} from './PostItem/PostItem';
 export {Screen} from './Screen/Screen';
 export {Text} from './Text/Text';
 export type {TextProps} from './Text/TextProps';
