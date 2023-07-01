@@ -13,6 +13,8 @@ export const Screen = ({
   children,
   canGoBack = false,
   scrollable = false,
+  style,
+  ...boxProps
 }: ScreenProps) => {
   const {colors} = useAppTheme();
   const {top, bottom} = useAppSafeArea();
@@ -25,9 +27,9 @@ export const Screen = ({
     <KeyboardAvoidingView behavior={behavior} style={{flex: 1}}>
       <Container backgroundColor={colors.background}>
         <Box
-          paddingBottom="s24"
           paddingHorizontal="s24"
-          style={{paddingTop: top, paddingBottom: bottom}}>
+          style={[{paddingTop: top, paddingBottom: bottom}, style]}
+          {...boxProps}>
           {canGoBack ? (
             <TouchableOpacityBox
               onPress={goBack}
