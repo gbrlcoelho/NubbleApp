@@ -10,7 +10,8 @@
       "@screens": ["src/screens/index.ts"],
       "@routes": ["src/routes/index.ts"],
       "@domain": ["src/domain/index.ts"],
-      "@brand": ["src/assets/brand/index.ts"]
+      "@brand": ["src/assets/brand/index.ts"],
+      "@api": ["src/api/index.ts"]
     }
   }
 }

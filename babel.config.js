@@ -14,6 +14,7 @@ module.exports = {
           '@routes': './src/routes',
           '@domain': './src/domain',
           '@brand': './src/assets/brand',
+          '@api': './src/api',
         },
       },
     ],
