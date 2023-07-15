@@ -18,7 +18,7 @@ module.exports = {
               },
               {
                 pattern:
-                  '@+(routes|screens|components|hooks|theme|icons|domain|api)',
+                  '@+(routes|screens|components|hooks|theme|icons|domain|api|types)',
                 group: 'internal',
                 position: 'before',
               },
