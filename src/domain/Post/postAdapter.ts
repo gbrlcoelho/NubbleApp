@@ -19,4 +19,9 @@ const toPost = (postAPI: PostAPI): Post => {
   };
 };
 
-export const postAdapter = {toPost};
+export const postAdapter = {
+  /**
+   * @description Adapter PostAPI to Post
+   */
+  toPost,
+};
