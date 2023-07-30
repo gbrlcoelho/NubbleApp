@@ -19,7 +19,13 @@ import {HomeHeader} from './components/HomeHeader/HomeHeader';
 export const HomeScreen = ({}: AppTabScreenProps<'HomeScreen'>) => {
   const flatlistRef = useRef<FlatList<Post>>(null);
   useScrollToTop(flatlistRef);
-  const {postList, error, loading, refresh, fetchNextPage} = usePostList();
+  const {
+    list: postList,
+    error,
+    loading,
+    refresh,
+    fetchNextPage,
+  } = usePostList();
 
   const contentContainerStyleFlex = postList.length === 0 ? 1 : undefined;
 
@@ -32,7 +38,7 @@ export const HomeScreen = ({}: AppTabScreenProps<'HomeScreen'>) => {
       <FlatList
         ref={flatlistRef}
         data={postList}
-        keyExtractor={item => item.id}
+        keyExtractor={item => item.id.toString()}
         renderItem={renderItem}
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{flex: contentContainerStyleFlex}}
