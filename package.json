@@ -9,6 +9,7 @@
     "start": "react-native start --reset-cache",
     "test": "jest",
     "prepare": "husky install",
+    "art:3333": "adb reverse tcp:3333 tcp:3333",
     "commit": "npx git-cz"
   },
   "dependencies": {
