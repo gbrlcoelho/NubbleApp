@@ -1,7 +1,7 @@
-import React, {useCallback} from 'react';
+import React, {useCallback, useState} from 'react';
 import {FlatList, ListRenderItem} from 'react-native';
 
-import {Screen} from '@components';
+import {Box, Screen, TextMessage} from '@components';
 import {PostComment, usePostCommentList} from '@domain';
 import {useAppSafeArea} from '@hooks';
 import {AppScreenProps} from '@routes';
@@ -17,6 +17,7 @@ export const PostCommentScreen = ({
     fetchNextPage,
     hasNextPage,
   } = usePostCommentList(postId);
+  const [message, setMessage] = useState('');
 
   const {bottom} = useAppSafeArea();
 
@@ -26,19 +27,27 @@ export const PostCommentScreen = ({
 
   return (
     <Screen flex={1} title="Comentários" canGoBack>
-      <FlatList
-        showsVerticalScrollIndicator={false}
-        data={postCommentList}
-        renderItem={renderItem}
-        keyExtractor={item => item.id.toString()}
-        contentContainerStyle={{paddingBottom: bottom}}
-        ListFooterComponent={
-          <PostCommentBottom
-            fetchNextPage={fetchNextPage}
-            hasNextPage={hasNextPage}
-          />
-        }
-      />
+      <Box flex={1} justifyContent="space-between">
+        <FlatList
+          showsVerticalScrollIndicator={false}
+          data={postCommentList}
+          renderItem={renderItem}
+          keyExtractor={item => item.id.toString()}
+          contentContainerStyle={{paddingBottom: bottom}}
+          ListFooterComponent={
+            <PostCommentBottom
+              fetchNextPage={fetchNextPage}
+              hasNextPage={hasNextPage}
+            />
+          }
+        />
+        <TextMessage
+          placeholder="Adicione um comentário"
+          value={message}
+          onChangeText={setMessage}
+          onPressSend={() => {}}
+        />
+      </Box>
     </Screen>
   );
 };
