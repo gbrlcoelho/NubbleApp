@@ -15,3 +15,5 @@ export {Text} from './Text/Text';
 export type {TextProps} from './Text/TextProps';
 export {TextInput} from './TextInput/TextInput';
 export type {TextInputProps} from './TextInput/TextInputProps';
+export {$textInputStyle} from './TextInput/TextInputStyles';
+export {TextMessage} from './TextMessage/TextMessage';
