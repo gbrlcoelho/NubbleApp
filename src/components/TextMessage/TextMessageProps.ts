@@ -1,5 +1,5 @@
 import {TextInputProps as RNTextInputProps} from 'react-native';
 
 export interface TextMessageProps extends RNTextInputProps {
-  onPressSend: () => void;
+  onPressSend: (message: string) => void;
 }
