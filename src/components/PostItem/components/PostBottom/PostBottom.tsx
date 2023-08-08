@@ -16,7 +16,7 @@ export const PostBottom = ({
   const commentText = getCommentText(commentCount);
 
   const navigateToPostCommentScreen = () => {
-    navigate('PostCommentScreen', {postId: id});
+    navigate('PostCommentScreen', {postId: id, postAuthorId: author.id});
   };
 
   return (
