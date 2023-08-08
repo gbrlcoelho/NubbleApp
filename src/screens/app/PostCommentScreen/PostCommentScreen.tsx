@@ -1,8 +1,8 @@
-import React, {useCallback} from 'react';
+import React from 'react';
 import {FlatList, ListRenderItem} from 'react-native';
 
 import {Box, Screen} from '@components';
-import {PostComment, usePostCommentList} from '@domain';
+import {PostComment, usePostCommentList, useUser} from '@domain';
 import {useAppSafeArea} from '@hooks';
 import {AppScreenProps} from '@routes';
 
@@ -15,7 +15,8 @@ import {
 export const PostCommentScreen = ({
   route,
 }: AppScreenProps<'PostCommentScreen'>) => {
-  const {postId} = route.params;
+  const {postId, postAuthorId} = route.params;
+  const {id} = useUser();
   const {
     list: postCommentList,
     fetchNextPage,
@@ -25,9 +26,16 @@ export const PostCommentScreen = ({
 
   const {bottom} = useAppSafeArea();
 
-  const renderItem: ListRenderItem<PostComment> = useCallback(({item}) => {
-    return <PostCommentItem postComment={item} />;
-  }, []);
+  const renderItem: ListRenderItem<PostComment> = ({item}) => {
+    return (
+      <PostCommentItem
+        postComment={item}
+        onRemoveComment={refresh}
+        postAuthorId={postAuthorId}
+        userId={id}
+      />
+    );
+  };
 
   return (
     <Screen flex={1} title="Comentários" canGoBack>
