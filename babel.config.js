@@ -24,6 +24,8 @@ module.exports = {
           '@brand': './src/assets/brand',
           '@api': './src/api',
           '@types': './src/types',
+          '@utils': './src/utils',
+          '@infra': './src/infra',
         },
       },
     ],

@@ -12,7 +12,9 @@
       "@domain": ["src/domain/index.ts"],
       "@brand": ["src/assets/brand/index.ts"],
       "@api": ["src/api/index.ts"],
-      "@types": ["src/types/index.ts"]
+      "@types": ["src/types/index.ts"],
+      "@utils": ["src/utils/index.ts"],
+      "@infra": ["src/infra/index.ts"]
     }
   }
 }

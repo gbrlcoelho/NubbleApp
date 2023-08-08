@@ -19,6 +19,7 @@ export const PostItem = ({post}: PostItemProps) => {
         favoriteCount={post.favoriteCount}
       />
       <PostBottom
+        id={post.id}
         author={post.author}
         text={post.text}
         commentCount={post.commentCount}

@@ -1,25 +1,21 @@
-export interface Post {
+export interface PostComment {
   id: number;
-  text: string;
+  message: string;
+  createdAt: string;
+  createdAtRelative: string;
   author: {
     id: number;
     profileURL: string;
     name: string;
     userName: string;
   };
-  imageURL: string;
-  reactionCount: number;
-  commentCount: number;
-  favoriteCount: number;
 }
 
-export interface PostAPI {
+export interface PostCommentAPI {
   id: number;
-  text: string;
+  message: string;
   user_id: number;
-  image_url: string;
-  is_fixed: boolean;
-  is_activated: boolean;
+  post_id: number;
   created_at: string;
   updated_at: string;
   user: {
@@ -32,10 +28,5 @@ export interface PostAPI {
     is_online: boolean;
     full_name: string;
   };
-  status: string;
-  meta: {
-    like_count: string;
-    favorite_count: string;
-    comments_count: string;
-  };
+  meta: any;
 }
