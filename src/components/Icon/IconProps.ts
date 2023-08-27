@@ -12,6 +12,7 @@ import {
   CheckRoundIcon,
   ChevronRightIcon,
   CommentIcon,
+  ErrorRoundIcon,
   EyeOffIcon,
   EyeOnIcon,
   FlashOffIcon,
@@ -58,6 +59,7 @@ export const iconRegistry = {
   checkRound: CheckRoundIcon,
   chevronRight: ChevronRightIcon,
   comment: CommentIcon,
+  errorRound: ErrorRoundIcon,
   eyeOn: EyeOnIcon,
   eyeOff: EyeOffIcon,
   flashOff: FlashOffIcon,
@@ -79,4 +81,4 @@ export const iconRegistry = {
 
 type IconType = typeof iconRegistry;
 
-type IconName = keyof IconType;
+export type IconName = keyof IconType;
