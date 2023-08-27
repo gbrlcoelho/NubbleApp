@@ -11,6 +11,7 @@ export {CheckIcon} from './CheckIcon';
 export {CheckRoundIcon} from './CheckRoundIcon';
 export {ChevronRightIcon} from './ChevronRightIcon';
 export {CommentIcon} from './CommentIcon';
+export {ErrorRoundIcon} from './ErrorRoundIcon';
 export {EyeOffIcon} from './EyeOffIcon';
 export {EyeOnIcon} from './EyeOnIcon';
 export {FlashOffIcon} from './FlashOffIcon';
