@@ -4,5 +4,5 @@ import {ThemeColors} from '@theme';
 
 export interface ActivityIndicatorProps
   extends Omit<RNActivityIndicatorProps, 'color'> {
-  color: ThemeColors;
+  color?: ThemeColors;
 }
