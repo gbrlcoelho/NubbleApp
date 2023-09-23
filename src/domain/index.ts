@@ -7,3 +7,6 @@ export type {PostComment} from './PostComment/postCommentTypes';
 export {usePostCommentCreate} from './PostComment/useCases/usePostCommentCreate';
 export {usePostCommentList} from './PostComment/useCases/usePostCommentList';
 export {usePostCommentRemove} from './PostComment/useCases/usePostCommentRemove';
+export {useUserGetById} from './User/useCases/useUserGetById';
+export {userService} from './User/userService';
+export type {User} from './User/userTypes';
