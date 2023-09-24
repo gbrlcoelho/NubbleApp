@@ -20,7 +20,7 @@ export const usePaginatedList = <T>(
       queryKey,
       queryFn: ({pageParam = 1}) => getList(pageParam),
       getNextPageParam: ({meta}) =>
-        meta.currentPage < meta.lastPage ? meta.currentPage + 1 : null,
+        meta.hasNextPage ? meta.currentPage + 1 : null,
     });
 
   const list = data?.pages.flatMap(page => page.data) || [];
