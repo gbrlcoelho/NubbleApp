@@ -1,10 +1,10 @@
 import {postCommentService} from '@domain';
-import {usePaginatedList} from '@infra';
+import {QueryKeys, usePaginatedList} from '@infra';
 
 export const usePostCommentList = (postId: number) => {
   const getList = (page: number) => {
     return postCommentService.getList(postId, page);
   };
 
-  return usePaginatedList(getList);
+  return usePaginatedList([QueryKeys.PostCommentList], getList);
 };
