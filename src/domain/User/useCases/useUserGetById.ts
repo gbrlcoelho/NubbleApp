@@ -1,31 +1,20 @@
-import {useCallback, useEffect, useState} from 'react';
+import {useQuery} from '@tanstack/react-query';
 
-import {User, userService} from '@domain';
+import {userService} from '@domain';
+import {QueryKeys} from '@infra';
 
 export const useUserGetById = (id: number) => {
-  const [user, setUser] = useState<User>();
-  const [error, setError] = useState<boolean | null>(null);
-  const [loading, setLoading] = useState(false);
-
-  const getUserById = useCallback(async () => {
-    setLoading(true);
-    try {
-      const _user = await userService.getById(id);
-      setUser(_user);
-    } catch (err) {
-      setError(true);
-    } finally {
-      setLoading(false);
-    }
-  }, [id]);
-
-  useEffect(() => {
-    getUserById();
-  }, [getUserById]);
+  const {data, isLoading, isError, refetch, isFetching} = useQuery({
+    queryKey: [QueryKeys.UserGetByID, id],
+    queryFn: () => userService.getById(id),
+    staleTime: 1000 * 30,
+  });
 
   return {
-    user,
-    error,
-    loading,
+    user: data,
+    isLoading,
+    isFetching,
+    isError,
+    refetch,
   };
 };
