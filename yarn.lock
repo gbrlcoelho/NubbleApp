@@ -1918,6 +1918,11 @@
   dependencies:
     "@sinonjs/commons" "^3.0.0"
 
+"@tanstack/eslint-plugin-query@^4.34.1":
+  version "4.34.1"
+  resolved "https://registry.yarnpkg.com/@tanstack/eslint-plugin-query/-/eslint-plugin-query-4.34.1.tgz#e3d8452461d8d796afd2e47a6aec11fd606b2a53"
+  integrity sha512-RflOwyXamuHhuMX5RL6wtKiVw9Hi5Hhiv9gW2/ICVc4omflB+GflrxwvQ+EWRKrSRv3C0YcR0UzRxuiZ4mLq7Q==
+
 "@tanstack/query-core@4.35.3":
   version "4.35.3"
   resolved "https://registry.yarnpkg.com/@tanstack/query-core/-/query-core-4.35.3.tgz#1c127e66b4ad1beeac052db83a812d7cb67369e1"
