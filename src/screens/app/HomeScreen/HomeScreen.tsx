@@ -21,8 +21,8 @@ export const HomeScreen = ({}: AppTabScreenProps<'HomeScreen'>) => {
   useScrollToTop(flatlistRef);
   const {
     list: postList,
-    error,
-    loading,
+    isError,
+    isLoading,
     refresh,
     fetchNextPage,
   } = usePostList();
@@ -44,13 +44,13 @@ export const HomeScreen = ({}: AppTabScreenProps<'HomeScreen'>) => {
         contentContainerStyle={{flex: contentContainerStyleFlex}}
         onEndReached={fetchNextPage}
         onEndReachedThreshold={0.1}
-        refreshing={loading}
+        refreshing={isLoading}
         refreshControl={
-          <RefreshControl refreshing={loading} onRefresh={refresh} />
+          <RefreshControl refreshing={isLoading} onRefresh={refresh} />
         }
         ListHeaderComponent={<HomeHeader />}
         ListEmptyComponent={
-          <HomeEmpty loading={loading} error={error} refresh={refresh} />
+          <HomeEmpty loading={isLoading} error={isError} refresh={refresh} />
         }
       />
     </Screen>
