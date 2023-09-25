@@ -8,15 +8,14 @@ import {useToastService} from '@services';
 import {PostCommentItemProps} from './PostCommentItemProps';
 
 export const PostCommentItem = ({
+  postId,
   postComment,
-  onRemoveComment,
   userId,
   postAuthorId,
 }: PostCommentItemProps) => {
   const {showToast} = useToastService();
-  const {mutate} = usePostCommentRemove({
+  const {mutate} = usePostCommentRemove(postId, {
     onSuccess: () => {
-      onRemoveComment();
       showToast({message: 'Comentário deletado'});
     },
   });

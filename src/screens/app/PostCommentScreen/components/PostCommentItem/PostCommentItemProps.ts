@@ -1,8 +1,8 @@
 import {PostComment} from '@domain';
 
 export interface PostCommentItemProps {
+  postId: number;
   postComment: PostComment;
-  onRemoveComment: () => void;
   userId: number;
   postAuthorId: number;
 }

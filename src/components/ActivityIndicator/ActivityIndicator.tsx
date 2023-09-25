@@ -6,7 +6,7 @@ import {useAppTheme} from '@hooks';
 import {ActivityIndicatorProps} from './ActivityIndicatorProps';
 
 export const ActivityIndicator = ({
-  color,
+  color = 'primary',
   ...activityIndicatorProps
 }: ActivityIndicatorProps) => {
   const {colors} = useAppTheme();
