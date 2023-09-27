@@ -10,11 +10,17 @@ import {
   Screen,
   Text,
 } from '@components';
+import {useAuthSignIn} from '@domain';
 import {AuthScreenProps} from '@routes';
+import {useToastService} from '@services';
 
 import {LoginSchema, loginSchema} from './loginSchema';
 
 export const LoginScreen = ({navigation}: AuthScreenProps<'LoginScreen'>) => {
+  const {showToast} = useToastService();
+  const {signIn, isLoading} = useAuthSignIn({
+    onError: message => showToast({type: 'error', message}),
+  });
   const {control, formState, handleSubmit} = useForm<LoginSchema>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
@@ -25,10 +31,7 @@ export const LoginScreen = ({navigation}: AuthScreenProps<'LoginScreen'>) => {
   });
 
   const submitForm = ({email, password}: LoginSchema) => {
-    console.log(`
-      email: ${email}
-      password: ${password}
-    `);
+    signIn({email, password});
   };
 
   const navigateToSignUpScreen = () => {
@@ -88,6 +91,7 @@ export const LoginScreen = ({navigation}: AuthScreenProps<'LoginScreen'>) => {
         marginTop="s48"
         onPress={handleSubmit(submitForm)}
         disabled={!formState.isValid}
+        loading={isLoading}
       />
 
       <Button
