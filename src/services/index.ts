@@ -1,3 +1,5 @@
+export type {AuthCredentialsService} from './authCredentials/authCredentialType';
+export {useAuthCredentials} from './authCredentials/useAuthCredentials';
 export {ToastProvider} from './toast/Providers/ToastProvider';
 export type {
   Toast,
