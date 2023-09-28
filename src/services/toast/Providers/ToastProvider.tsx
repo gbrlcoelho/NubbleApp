@@ -11,13 +11,13 @@ export const ToastContext = createContext<ToastService>({
 export const ToastProvider = ({children}: React.PropsWithChildren<{}>) => {
   const [toast, setToast] = useState<ToastService['toast']>(null);
 
-  function showToast(_toast: Toast) {
+  const showToast = (_toast: Toast) => {
     setToast(_toast);
-  }
+  };
 
-  function hideToast() {
+  const hideToast = () => {
     setToast(null);
-  }
+  };
 
   return (
     <ToastContext.Provider value={{toast, showToast, hideToast}}>
