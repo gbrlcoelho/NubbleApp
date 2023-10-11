@@ -7,10 +7,16 @@ import {SafeAreaProvider} from 'react-native-safe-area-context';
 
 import {Toast} from '@components';
 import {Router} from '@routes';
-import {AuthCredentialsProvider} from '@services';
+import {
+  AuthCredentialsProvider,
+  MMKVStorage,
+  initializeStorage,
+} from '@services';
 import {theme} from '@theme';
 
 const queryClient = new QueryClient();
+
+initializeStorage(MMKVStorage);
 
 export const App = () => {
   return (
