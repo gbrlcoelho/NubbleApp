@@ -52,9 +52,7 @@ const isEmailAvailable = async (params: {
 const forgotPassword = async (
   params: ForgotPasswordParam,
 ): Promise<{message: string}> => {
-  const response = await api.post<{message: string}>('forgot-password', {
-    params,
-  });
+  const response = await api.post<{message: string}>('forgot-password', params);
 
   return response.data;
 };
