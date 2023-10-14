@@ -1,25 +1,67 @@
 import {useQuery} from '@tanstack/react-query';
 
-import {authService} from '@domain';
 import {useDebounce} from '@hooks';
 import {QueryKeys} from '@infra';
 
-interface Param {
-  username: string;
+import {authService} from '../authService';
+
+interface Param<T extends {length: number}> {
+  value: T;
+  enabled: boolean;
+  queryKey: QueryKeys;
+  isAvailableFn: (value: T) => Promise<boolean>;
 }
 
-export const useAuthUsernameAvailable = ({username}: Param) => {
-  const debouncedUsername = useDebounce(username, 1500);
+const useAuthValueIsAvailable = <T extends {length: number}>({
+  value,
+  enabled,
+  queryKey,
+  isAvailableFn,
+}: Param<T>) => {
+  const debouncedValue = useDebounce(value, 1500);
 
   const {data, isFetching} = useQuery({
-    queryKey: [QueryKeys.IsUserNameAvailable, debouncedUsername],
-    queryFn: () => authService.isUserNameAvailable(debouncedUsername),
+    queryKey: [queryKey, debouncedValue],
+    queryFn: () => isAvailableFn(debouncedValue),
     retry: false,
     staleTime: 20000,
+    enabled: enabled && debouncedValue.length > 0,
   });
 
+  const isDebouncing = debouncedValue !== value;
+
   return {
-    isAvailable: !!data,
-    isFetching,
+    isUnavailable: data === false,
+    isFetching: isFetching || isDebouncing,
   };
+};
+
+export const useAuthUsernameAvailable = ({
+  username,
+  enabled,
+}: {
+  username: string;
+  enabled: boolean;
+}) => {
+  return useAuthValueIsAvailable({
+    value: username,
+    enabled,
+    queryKey: QueryKeys.IsUsernameAvailable,
+    isAvailableFn: authService.isUserNameAvailable,
+  });
+};
+
+export const useAuthEmailAvailable = ({
+  email,
+  enabled,
+}: {
+  email: string;
+  enabled: boolean;
+}) => {
+  return useAuthValueIsAvailable({
+    value: email,
+    enabled,
+    queryKey: QueryKeys.IsEmailAvailable,
+    isAvailableFn: authService.isEmailAvailable,
+  });
 };

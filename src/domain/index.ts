@@ -3,7 +3,10 @@ export type {AuthCredentials, SignUpData} from './Auth/authTypes';
 export {useAuthSignIn} from './Auth/hooks/useAuthSignIn';
 export {useAuthSignOut} from './Auth/hooks/useAuthSignOut';
 export {useAuthSignUp} from './Auth/hooks/useAuthSignUp';
-export {useAuthUsernameAvailable} from './Auth/hooks/useAuthValueIsAvailable';
+export {
+  useAuthEmailAvailable,
+  useAuthUsernameAvailable,
+} from './Auth/hooks/useAuthValueIsAvailable';
 export {useUser} from './Auth/hooks/useUser';
 export {postService} from './Post/postService';
 export type {Post} from './Post/postTypes';
