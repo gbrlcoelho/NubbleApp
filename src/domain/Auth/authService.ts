@@ -42,6 +42,11 @@ const removeToken = () => {
   api.defaults.headers.common.Authorization = null;
 };
 
+const requestNewPassword = async (email: string): Promise<string> => {
+  const {message} = await authApi.forgotPassword({email});
+  return message;
+};
+
 export const authService = {
   signIn,
   signOut,
@@ -50,4 +55,5 @@ export const authService = {
   isEmailAvailable,
   updateToken,
   removeToken,
+  requestNewPassword,
 };

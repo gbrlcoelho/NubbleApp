@@ -1,5 +1,6 @@
 export {authService} from './Auth/authService';
 export type {AuthCredentials, SignUpData} from './Auth/authTypes';
+export {useAuthRequestNewPassword} from './Auth/hooks/useAuthRequestNewPassword';
 export {useAuthSignIn} from './Auth/hooks/useAuthSignIn';
 export {useAuthSignOut} from './Auth/hooks/useAuthSignOut';
 export {useAuthSignUp} from './Auth/hooks/useAuthSignUp';
