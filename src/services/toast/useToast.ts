@@ -3,11 +3,11 @@ import {ToastService} from '@services';
 // import {useToastContext} from './useToastContext';
 import {useToastServiceZustand, useToastZustand} from './useToastZustand';
 
-export function useToast(): ToastService['toast'] {
+export const useToast = (): ToastService['toast'] => {
   // const {toast} = useToastContext();
   // return toast;
   return useToastZustand();
-}
+};
 
 export const useToastService = (): Pick<
   ToastService,

@@ -4,17 +4,36 @@ import {zodResolver} from '@hookform/resolvers/zod';
 import {useForm} from 'react-hook-form';
 
 import {Button, FormTextInput, Screen, Text} from '@components';
+import {useAuthRequestNewPassword} from '@domain';
 import {useResetNavigationSuccess} from '@hooks';
-import {AuthScreenProps} from '@routes';
+import {AuthScreenProps, AuthStackParamList} from '@routes';
+import {useToastService} from '@services';
 
 import {
   ForgotPasswordSchema,
   forgotPasswordSchema,
 } from './forgotPasswordSchema';
 
+const resetParam: AuthStackParamList['SuccessScreen'] = {
+  title: `Enviamos as instruções ${'\n'}para seu e-mail`,
+  description: 'Clique no link enviado no seu e-mail para recuperar sua senha',
+  icon: {
+    name: 'messageRound',
+    color: 'primary',
+  },
+};
+
 export const ForgotPasswordScreen =
   ({}: AuthScreenProps<'ForgotPasswordScreen'>) => {
     const {reset} = useResetNavigationSuccess();
+
+    const {showToast} = useToastService();
+
+    const {requestNewPassword, isLoading} = useAuthRequestNewPassword({
+      onSuccess: () => reset(resetParam),
+      onError: message => showToast({message, type: 'error'}),
+    });
+
     const {control, formState, handleSubmit} = useForm<ForgotPasswordSchema>({
       resolver: zodResolver(forgotPasswordSchema),
       defaultValues: {
@@ -23,16 +42,8 @@ export const ForgotPasswordScreen =
       mode: 'onChange',
     });
 
-    const submitForm = () => {
-      reset({
-        title: `Enviamos as instruções ${'\n'}para seu e-mail`,
-        description:
-          'Clique no link enviado no seu e-mail para recuperar sua senha',
-        icon: {
-          name: 'messageRound',
-          color: 'primary',
-        },
-      });
+    const submitForm = (values: ForgotPasswordSchema) => {
+      requestNewPassword(values.email);
     };
 
     return (
@@ -62,6 +73,7 @@ export const ForgotPasswordScreen =
           title="Recuperar senha"
           onPress={handleSubmit(submitForm)}
           disabled={!formState.isValid}
+          loading={isLoading}
         />
       </Screen>
     );
