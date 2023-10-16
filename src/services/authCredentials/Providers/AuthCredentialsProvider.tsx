@@ -1,5 +1,6 @@
 import React, {createContext, useEffect, useState} from 'react';
 
+import {registerInterceptor} from '@api';
 import {AuthCredentials, authService} from '@domain';
 
 import {authCredentialsStorage} from '../authCredentialsStorage';
@@ -26,7 +27,6 @@ export const AuthCredentialsProvider = ({
 
   async function startAuthCredentials() {
     try {
-      // await new Promise(resolve => setTimeout(resolve, 2000, ''));
       const ac = await authCredentialsStorage.get();
       if (ac) {
         authService.updateToken(ac.token);
@@ -50,6 +50,16 @@ export const AuthCredentialsProvider = ({
     authCredentialsStorage.remove();
     setAuthCredentials(null);
   }
+
+  useEffect(() => {
+    const interceptor = registerInterceptor({
+      authCredentials,
+      saveCredentials,
+      removeCredentials,
+    });
+
+    return interceptor;
+  }, [authCredentials]);
 
   return (
     <AuthCredentialsContext.Provider

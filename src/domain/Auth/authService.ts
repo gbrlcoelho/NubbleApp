@@ -47,6 +47,13 @@ const requestNewPassword = async (email: string): Promise<string> => {
   return message;
 };
 
+const authenticateByRefreshToken = async (
+  refreshToken: string,
+): Promise<AuthCredentials> => {
+  const authCredentialsAPI = await authApi.refreshToken(refreshToken);
+  return authAdapter.toAuthCredentials(authCredentialsAPI);
+};
+
 export const authService = {
   signIn,
   signOut,
@@ -56,4 +63,6 @@ export const authService = {
   updateToken,
   removeToken,
   requestNewPassword,
+  authenticateByRefreshToken,
+  isRefreshTokenRequest: authApi.isRefreshTokenRequest,
 };
