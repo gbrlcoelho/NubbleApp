@@ -67,6 +67,13 @@
     ]
   },
   "jest": {
-    "preset": "react-native"
+    "preset": "react-native",
+    "collectCoverageFrom": [
+      "src/{components,utils}/**/*.{ts,tsx}"
+    ],
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "index"
+    ]
   }
 }
