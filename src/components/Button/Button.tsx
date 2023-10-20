@@ -16,6 +16,7 @@ export const Button = ({
 
   return (
     <TouchableOpacityBox
+      testID="button"
       disabled={disabled || loading}
       paddingHorizontal="s20"
       height={50}
@@ -25,7 +26,10 @@ export const Button = ({
       {...buttonPreset.container}
       {...touchableOpacityBoxProps}>
       {loading ? (
-        <ActivityIndicator color={buttonPreset.content} />
+        <ActivityIndicator
+          testID="activity-indicator"
+          color={buttonPreset.content}
+        />
       ) : (
         <Text preset="paragraphMedium" bold color={buttonPreset.content}>
           {title}
