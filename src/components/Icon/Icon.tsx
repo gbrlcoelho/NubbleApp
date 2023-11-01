@@ -17,7 +17,7 @@ export const Icon = ({
 
   if (onPress) {
     return (
-      <Pressable onPress={onPress} hitSlop={10}>
+      <Pressable testID={name} onPress={onPress} hitSlop={10}>
         <SVGIcon size={size} color={colors[color]} />
       </Pressable>
     );
