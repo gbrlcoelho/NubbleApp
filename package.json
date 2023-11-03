@@ -85,7 +85,7 @@
       ".*/mockedData/.*"
     ],
     "collectCoverageFrom": [
-      "src/{components,utils}/**/*.{ts,tsx}"
+      "src/{components,utils,hooks,domain}/**/*.{ts,tsx}"
     ],
     "coveragePathIgnorePatterns": [
       "/node_modules/",

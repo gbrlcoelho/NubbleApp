@@ -1,14 +1,14 @@
 export {authService} from './Auth/authService';
 export type {AuthCredentials, SignUpData} from './Auth/authTypes';
-export {useAuthRequestNewPassword} from './Auth/hooks/useAuthRequestNewPassword';
-export {useAuthSignIn} from './Auth/hooks/useAuthSignIn';
-export {useAuthSignOut} from './Auth/hooks/useAuthSignOut';
-export {useAuthSignUp} from './Auth/hooks/useAuthSignUp';
+export {useUser} from './Auth/hooks/useUser';
+export {useAuthRequestNewPassword} from './Auth/useCases/useAuthRequestNewPassword';
+export {useAuthSignIn} from './Auth/useCases/useAuthSignIn';
+export {useAuthSignOut} from './Auth/useCases/useAuthSignOut';
+export {useAuthSignUp} from './Auth/useCases/useAuthSignUp';
 export {
   useAuthEmailAvailable,
   useAuthUsernameAvailable,
-} from './Auth/hooks/useAuthValueIsAvailable';
-export {useUser} from './Auth/hooks/useUser';
+} from './Auth/useCases/useAuthValueIsAvailable';
 export {postService} from './Post/postService';
 export type {Post} from './Post/postTypes';
 export {usePostList} from './Post/useCases/usePostList';
