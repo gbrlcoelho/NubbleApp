@@ -1,4 +1,4 @@
-import {AllTheProviders, renderHook, waitFor} from 'test-utils';
+import {renderHook, waitFor} from 'test-utils';
 
 import {authService, useAuthSignIn} from '@domain';
 
@@ -23,11 +23,8 @@ describe('useAuthSignIn', () => {
       .mockResolvedValueOnce(mockedAuthCredentials);
 
     const mockedOnSuccess = jest.fn();
-    const {result} = renderHook(
-      () => useAuthSignIn({onSuccess: mockedOnSuccess}),
-      {
-        wrapper: AllTheProviders,
-      },
+    const {result} = renderHook(() =>
+      useAuthSignIn({onSuccess: mockedOnSuccess}),
     );
 
     result.current.signIn({email: 'gbrlcoelho@coffstack.com', password: '123'});
@@ -44,9 +41,7 @@ describe('useAuthSignIn', () => {
       .mockRejectedValue(new Error('invalid user'));
 
     const mockedOnError = jest.fn();
-    const {result} = renderHook(() => useAuthSignIn({onError: mockedOnError}), {
-      wrapper: AllTheProviders,
-    });
+    const {result} = renderHook(() => useAuthSignIn({onError: mockedOnError}));
 
     result.current.signIn({email: 'gbrlcoelho@coffstack.com', password: '123'});
 
