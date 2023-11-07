@@ -44,7 +44,7 @@ const remove = async (postCommentId: number): Promise<string> => {
  */
 const isAllowedToDelete = (
   postComment: PostComment,
-  userId: number,
+  userId: number | null,
   postAuthorId: number,
 ): boolean => {
   if (postComment.author.id === userId) {
