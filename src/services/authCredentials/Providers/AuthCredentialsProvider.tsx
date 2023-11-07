@@ -9,6 +9,7 @@ import {AuthCredentialsService} from '../authCredentialsTypes';
 export const AuthCredentialsContext = createContext<AuthCredentialsService>({
   authCredentials: null,
   isLoading: true,
+  userId: null,
   saveCredentials: async () => {},
   removeCredentials: async () => {},
 });
@@ -51,6 +52,8 @@ export const AuthCredentialsProvider = ({
     setAuthCredentials(null);
   }
 
+  const userId = authCredentials?.user.id || null;
+
   useEffect(() => {
     const interceptor = registerInterceptor({
       authCredentials,
@@ -63,7 +66,13 @@ export const AuthCredentialsProvider = ({
 
   return (
     <AuthCredentialsContext.Provider
-      value={{authCredentials, isLoading, saveCredentials, removeCredentials}}>
+      value={{
+        authCredentials,
+        isLoading,
+        saveCredentials,
+        removeCredentials,
+        userId,
+      }}>
       {children}
     </AuthCredentialsContext.Provider>
   );
