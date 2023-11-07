@@ -16,6 +16,7 @@
       "@utils": ["src/utils/index.ts"],
       "@infra": ["src/infra/index.ts"],
       "@services": ["src/services/index.ts"],
+      "@test": ["src/test/index.ts"],
       "test-utils": ["src/test/test-utils.tsx"]
     }
   }
