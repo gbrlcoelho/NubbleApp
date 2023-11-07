@@ -11,8 +11,9 @@ export {
 export {postService} from './Post/postService';
 export type {Post} from './Post/postTypes';
 export {usePostList} from './Post/useCases/usePostList';
+export {POST_COMMENT_PATH} from './PostComment/postCommentApi';
 export {postCommentService} from './PostComment/postCommentService';
-export type {PostComment} from './PostComment/postCommentTypes';
+export type {PostComment, PostCommentAPI} from './PostComment/postCommentTypes';
 export {usePostCommentCreate} from './PostComment/useCases/usePostCommentCreate';
 export {usePostCommentList} from './PostComment/useCases/usePostCommentList';
 export {usePostCommentRemove} from './PostComment/useCases/usePostCommentRemove';
