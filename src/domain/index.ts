@@ -1,6 +1,5 @@
 export {authService} from './Auth/authService';
 export type {AuthCredentials, SignUpData} from './Auth/authTypes';
-export {useUser} from './Auth/hooks/useUser';
 export {useAuthRequestNewPassword} from './Auth/useCases/useAuthRequestNewPassword';
 export {useAuthSignIn} from './Auth/useCases/useAuthSignIn';
 export {useAuthSignOut} from './Auth/useCases/useAuthSignOut';
@@ -12,8 +11,9 @@ export {
 export {postService} from './Post/postService';
 export type {Post} from './Post/postTypes';
 export {usePostList} from './Post/useCases/usePostList';
+export {POST_COMMENT_PATH} from './PostComment/postCommentApi';
 export {postCommentService} from './PostComment/postCommentService';
-export type {PostComment} from './PostComment/postCommentTypes';
+export type {PostComment, PostCommentAPI} from './PostComment/postCommentTypes';
 export {usePostCommentCreate} from './PostComment/useCases/usePostCommentCreate';
 export {usePostCommentList} from './PostComment/useCases/usePostCommentList';
 export {usePostCommentRemove} from './PostComment/useCases/usePostCommentRemove';

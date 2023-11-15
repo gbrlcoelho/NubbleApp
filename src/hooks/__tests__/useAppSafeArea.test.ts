@@ -4,8 +4,6 @@ import {renderHook} from 'test-utils';
 import {useAppSafeArea} from '@hooks';
 import {theme} from '@theme';
 
-jest.mock('react-native-safe-area-context');
-
 const mockedUseSafeAreaInsets = jest.mocked(useSafeAreaInsets);
 
 describe('useAppSafeArea', () => {
