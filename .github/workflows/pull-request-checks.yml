@@ -1,0 +1,29 @@
+name: pull-request-checks
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  pull-request-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: install dependencies
+        run: yarn install
+
+      - name: run lint
+        run: yarn lint
+
+      - name: run typescript compiler
+        run: yarn tsc --noEmit
+
+      - name: run tests
+        run: yarn test
