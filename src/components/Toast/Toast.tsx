@@ -48,6 +48,7 @@ export const Toast = () => {
 
   return (
     <Animated.View
+      testID="toast-message"
       style={{position: 'absolute', alignSelf: 'center', opacity: fadeAnim}}>
       <ToastContent toast={toast} />
     </Animated.View>
