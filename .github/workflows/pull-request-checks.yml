@@ -19,9 +19,8 @@ jobs:
       - name: install dependencies
         run: yarn install
 
-      - name: Set environment variables
-        run: |
-          echo "REACT_APP_BASE_URL=$REACT_APP_BASE_URL" >> .env
+      - name: Copy GitHub Actions environment file
+        run: cp .env.github .env
 
       - name: run lint
         run: yarn lint
