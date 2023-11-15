@@ -73,8 +73,8 @@ describe('Integration: PostCommentScreen', () => {
     const mockedAlert = jest
       .spyOn(Alert, 'alert')
       .mockImplementation((title, message, buttons) => {
-        if (buttons && buttons[0]) {
-          mockedConfirm = buttons[0].onPress;
+        if (buttons && buttons[1]) {
+          mockedConfirm = buttons[1].onPress;
         }
       });
 
