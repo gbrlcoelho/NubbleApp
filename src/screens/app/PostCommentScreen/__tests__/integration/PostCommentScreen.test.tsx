@@ -1,8 +1,8 @@
 import React from 'react';
 import {Alert, AlertButton} from 'react-native';
 
-import {act} from 'react-test-renderer';
 import {
+  act,
   fireEvent,
   renderScreen,
   screen,
