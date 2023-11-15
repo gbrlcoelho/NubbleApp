@@ -1,3 +1,5 @@
+import {UserAPI} from '@domain';
+
 export interface PostComment {
   id: number;
   message: string;
@@ -18,15 +20,6 @@ export interface PostCommentAPI {
   post_id: number;
   created_at: string;
   updated_at: string;
-  user: {
-    id: number;
-    first_name: string;
-    last_name: string;
-    username: string;
-    email: string;
-    profile_url: string;
-    is_online: boolean;
-    full_name: string;
-  };
+  user: UserAPI;
   meta: any;
 }
