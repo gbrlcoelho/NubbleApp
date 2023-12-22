@@ -47,10 +47,10 @@ export const PostCommentItem = ({
       disabled={!isAllowedToDelete}
       onLongPress={confirmRemove}>
       <Box flexDirection="row" alignItems="center" marginBottom="s16">
-        <ProfileAvatar imageURL={postComment.author.profileURL} />
+        <ProfileAvatar imageURL={postComment.author.profileUrl} />
         <Box marginLeft="s12" flex={1}>
           <Text preset="paragraphSmall" bold>
-            {postComment.author.userName}
+            {postComment.author.username}
           </Text>
           <Text preset="paragraphSmall" color="gray1">
             {postComment.message} - {postComment.createdAtRelative}
