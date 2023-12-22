@@ -1,6 +1,10 @@
 export {ActivityIndicator} from './ActivityIndicator/ActivityIndicator';
-export {Box, TouchableOpacityBox} from './Box/Box';
-export type {BoxProps, TouchableOpacityBoxProps} from './Box/Box';
+export {Box, PressableBox, TouchableOpacityBox} from './Box/Box';
+export type {
+  BoxProps,
+  PressableBoxProps,
+  TouchableOpacityBoxProps,
+} from './Box/Box';
 export {Button} from './Button/Button';
 export {FormPasswordInput} from './Form/FormPasswordInput';
 export {FormTextInput} from './Form/FormTextInput';
