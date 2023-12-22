@@ -13,6 +13,7 @@ export const Screen = ({
   scrollable = false,
   title = '',
   style,
+  HeaderComponent,
   ...boxProps
 }: ScreenProps) => {
   const {colors} = useAppTheme();
@@ -28,7 +29,11 @@ export const Screen = ({
           paddingHorizontal="s24"
           style={[{paddingTop: top, paddingBottom: bottom}, style]}
           {...boxProps}>
-          <ScreenHeader canGoBack={canGoBack} title={title} />
+          <ScreenHeader
+            HeaderComponent={HeaderComponent}
+            canGoBack={canGoBack}
+            title={title}
+          />
           {children}
         </Box>
       </Container>
