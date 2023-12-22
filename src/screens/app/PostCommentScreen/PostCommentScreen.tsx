@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import {FlatList, ListRenderItem} from 'react-native';
 
 import {Box, Screen} from '@components';
@@ -26,16 +26,19 @@ export const PostCommentScreen = ({
 
   const {bottom} = useAppSafeArea();
 
-  const renderItem: ListRenderItem<PostComment> = ({item}) => {
-    return (
-      <PostCommentItem
-        postId={postId}
-        postComment={item}
-        postAuthorId={postAuthorId}
-        userId={userId}
-      />
-    );
-  };
+  const renderItem: ListRenderItem<PostComment> = useCallback(
+    ({item}) => {
+      return (
+        <PostCommentItem
+          postId={postId}
+          postComment={item}
+          postAuthorId={postAuthorId}
+          userId={userId}
+        />
+      );
+    },
+    [postAuthorId, postId, userId],
+  );
 
   return (
     <Screen flex={1} title="Comentários" canGoBack>
