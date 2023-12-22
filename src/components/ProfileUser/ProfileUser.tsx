@@ -5,21 +5,21 @@ import {useNavigation} from '@react-navigation/native';
 
 import {Box, ProfileAvatar, Text} from '@components';
 
-import {PostHeaderProps} from './PostHeaderProps';
+import {ProfileUserProps} from './ProfileUserProps';
 
-export const PostHeader = ({author}: PostHeaderProps) => {
+export const ProfileUser = ({user}: ProfileUserProps) => {
   const {navigate} = useNavigation();
 
   const navigateToProfile = () => {
-    navigate('ProfileScreen', {userId: author.id});
+    navigate('ProfileScreen', {userId: user.id});
   };
 
   return (
     <Pressable onPress={navigateToProfile}>
       <Box flexDirection="row" alignItems="center" marginBottom="s16">
-        <ProfileAvatar imageURL={author.profileURL} />
+        <ProfileAvatar imageURL={user.profileUrl} />
         <Text marginLeft="s12" preset="paragraphMedium" semiBold>
-          {author.userName}
+          {user.username}
         </Text>
       </Box>
     </Pressable>
