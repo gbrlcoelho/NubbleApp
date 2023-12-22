@@ -9,9 +9,9 @@ const toPost = (postAPI: PostAPI): Post => {
     text: postAPI.text,
     author: {
       id: postAPI.user.id,
-      profileURL: postAPI.user.profile_url,
+      profileUrl: postAPI.user.profile_url,
       name: postAPI.user.full_name,
-      userName: postAPI.user.username,
+      username: postAPI.user.username,
     },
     imageURL: postAPI.image_url,
     reactionCount: parseInt(postAPI.meta.like_count, 10),

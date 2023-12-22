@@ -14,8 +14,8 @@ const toPostComment = (postCommentAPI: PostCommentAPI): PostComment => {
     author: {
       id: postCommentAPI.user.id,
       name: postCommentAPI.user.full_name,
-      profileURL: postCommentAPI.user.profile_url,
-      userName: postCommentAPI.user.username,
+      profileUrl: postCommentAPI.user.profile_url,
+      username: postCommentAPI.user.username,
     },
   };
 };

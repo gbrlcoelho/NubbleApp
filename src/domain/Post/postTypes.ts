@@ -3,9 +3,9 @@ export interface Post {
   text: string;
   author: {
     id: number;
-    profileURL: string;
+    profileUrl: string;
     name: string;
-    userName: string;
+    username: string;
   };
   imageURL: string;
   reactionCount: number;
