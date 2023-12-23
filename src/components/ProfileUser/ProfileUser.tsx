@@ -10,6 +10,7 @@ import {ProfileUserProps} from './ProfileUserProps';
 export const ProfileUser = ({
   user,
   onPress,
+  avatarProps,
   ...pressableBoxProps
 }: ProfileUserProps) => {
   const {navigate} = useNavigation();
@@ -28,7 +29,7 @@ export const ProfileUser = ({
       marginBottom="s16"
       onPress={handleOnPress}
       {...pressableBoxProps}>
-      <ProfileAvatar imageURL={user.profileUrl} />
+      <ProfileAvatar {...avatarProps} imageURL={user.profileUrl} />
       <Text marginLeft="s12" preset="paragraphMedium" semiBold>
         {user.username}
       </Text>

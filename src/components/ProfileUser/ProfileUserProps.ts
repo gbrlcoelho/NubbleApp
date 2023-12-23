@@ -1,7 +1,7 @@
+import {PressableBoxProps, ProfileAvatarProps} from '@components';
 import {User} from '@domain';
-
-import {PressableBoxProps} from '../Box/Box';
 
 export type ProfileUserProps = {
   user: Pick<User, 'username' | 'profileUrl' | 'id'>;
+  avatarProps?: Omit<Partial<ProfileAvatarProps>, 'imageURL'>;
 } & PressableBoxProps;
