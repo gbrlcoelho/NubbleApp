@@ -1,14 +1,18 @@
 import {useMutation} from '@tanstack/react-query';
 
 import {authService} from '@domain';
-import {useAuthCredentials} from '@services';
+import {useAuthCredentials, useSearchHistoryService} from '@services';
 
 export const useAuthSignOut = () => {
   const {removeCredentials} = useAuthCredentials();
+  const {clearUserList} = useSearchHistoryService();
   const mutation = useMutation<string, unknown, void>({
     mutationFn: authService.signOut,
     retry: false,
-    onSuccess: removeCredentials,
+    onSettled: () => {
+      removeCredentials();
+      clearUserList();
+    },
   });
 
   return {
