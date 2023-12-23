@@ -4,4 +4,5 @@ import {User} from '@domain';
 export type ProfileUserProps = {
   user: Pick<User, 'username' | 'profileUrl' | 'id'>;
   avatarProps?: Omit<Partial<ProfileAvatarProps>, 'imageURL'>;
+  RightComponent?: React.ReactElement;
 } & PressableBoxProps;
