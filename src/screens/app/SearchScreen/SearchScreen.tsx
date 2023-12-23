@@ -18,7 +18,13 @@ export const SearchScreen = ({}: AppScreenProps<'SearchScreen'>) => {
 
   const renderItem = useCallback(
     ({item}: ListRenderItemInfo<User>) => {
-      return <ProfileUser user={item} onPress={() => addUser(item)} />;
+      return (
+        <ProfileUser
+          user={item}
+          onPress={() => addUser(item)}
+          avatarProps={{size: 48}}
+        />
+      );
     },
     [addUser],
   );
