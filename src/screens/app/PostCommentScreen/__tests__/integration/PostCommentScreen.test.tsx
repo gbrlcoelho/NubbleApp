@@ -12,7 +12,12 @@ import {
 
 import {PostCommentScreen} from '@screens';
 import {authCredentialsStorage} from '@services';
-import {mockedPostComment, resetInMemoryResponse, server} from '@test';
+import {
+  mockUtils,
+  mockedPostComment,
+  resetInMemoryResponse,
+  server,
+} from '@test';
 
 beforeAll(() => {
   server.listen();
@@ -67,7 +72,7 @@ describe('Integration: PostCommentScreen', () => {
   it('should automatically update the list when deleting a comment and show and show a toast message', async () => {
     jest
       .spyOn(authCredentialsStorage, 'get')
-      .mockResolvedValue(mockedPostComment.userAuthCredentials);
+      .mockResolvedValue(mockUtils.userAuthCredentials);
 
     let mockedConfirm: AlertButton['onPress'];
     const mockedAlert = jest

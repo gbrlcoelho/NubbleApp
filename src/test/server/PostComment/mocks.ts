@@ -1,26 +1,8 @@
 import {PageAPI} from '@api';
-import {AuthCredentials, PostCommentAPI, UserAPI, userAdapter} from '@domain';
+import {PostCommentAPI} from '@domain';
+import {mockUtils} from '@test';
 
 const POST_ID = 1;
-
-const userAPI: UserAPI = {
-  id: 7,
-  first_name: 'Gabriel',
-  last_name: 'Coelho',
-  username: 'gbrlcoelho',
-  email: 'gbrlcoelho@coffstack.com',
-  profile_url:
-    'https://nubble-development.s3.sa-east-1.amazonaws.com/backend-integration/8-mateus.png',
-  is_online: false,
-  full_name: 'Gabriel Coelho',
-};
-
-export const userAuthCredentials: AuthCredentials = {
-  token: 'access-token',
-  tokenExpiresAt: '2030-10-07T12:08:50.433+00:00',
-  refreshToken: 'refresh-token',
-  user: userAdapter.toUser(userAPI),
-};
 
 export const userPostCommentAPI: PostCommentAPI = {
   id: 113,
@@ -29,7 +11,7 @@ export const userPostCommentAPI: PostCommentAPI = {
   post_id: POST_ID,
   created_at: '2023-10-20T10:26:18.000+00:00',
   updated_at: '2023-10-21T07:46:21.828+00:00',
-  user: userAPI,
+  user: mockUtils.userAPI,
   meta: {},
 };
 
@@ -75,6 +57,5 @@ export const mockedData = {
   POST_ID,
   mockedPostCommentResponse,
   postCommentAPI,
-  userAuthCredentials,
   userPostCommentAPI,
 };

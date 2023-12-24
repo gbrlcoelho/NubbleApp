@@ -1,17 +1,16 @@
 import React from 'react';
 
-import {Box} from '@components';
+import {Box, ProfileUser} from '@components';
 
 import {PostActions} from './components/PostActions/PostActions';
 import {PostBottom} from './components/PostBottom/PostBottom';
-import {PostHeader} from './components/PostHeader/PostHeader';
 import {PostImage} from './components/PostImage/PostImage';
 import {PostItemProps} from './PostItemProps';
 
 export const PostItem = ({post}: PostItemProps) => {
   return (
     <Box marginBottom="s24" paddingHorizontal="s24">
-      <PostHeader author={post.author} />
+      <ProfileUser user={post.author} />
       <PostImage imageURL={post.imageURL} />
       <PostActions
         reactionCount={post.reactionCount}

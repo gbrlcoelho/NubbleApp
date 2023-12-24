@@ -14,6 +14,7 @@ export const TextInput = ({
   label,
   errorMessage,
   RightComponent,
+  LeftComponent,
   boxProps,
   ...rnTextInputProps
 }: TextInputProps) => {
@@ -25,12 +26,19 @@ export const TextInput = ({
   };
 
   return (
-    <Box {...boxProps}>
+    <Box flexGrow={1} flexShrink={1} {...boxProps}>
       <Pressable onPress={focusInput}>
-        <Text preset="paragraphMedium" marginBottom="s4">
-          {label}
-        </Text>
+        {label && (
+          <Text preset="paragraphMedium" marginBottom="s4">
+            {label}
+          </Text>
+        )}
         <Box {...handleTextInputContainerStyle(errorMessage)}>
+          {LeftComponent ? (
+            <Box marginRight="s16" justifyContent="center">
+              {LeftComponent}
+            </Box>
+          ) : null}
           <RNTextInput
             autoCapitalize="none"
             ref={inputRef}

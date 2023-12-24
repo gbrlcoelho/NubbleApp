@@ -1,6 +1,10 @@
 export {ActivityIndicator} from './ActivityIndicator/ActivityIndicator';
-export {Box, TouchableOpacityBox} from './Box/Box';
-export type {BoxProps, TouchableOpacityBoxProps} from './Box/Box';
+export {Box, PressableBox, TouchableOpacityBox} from './Box/Box';
+export type {
+  BoxProps,
+  PressableBoxProps,
+  TouchableOpacityBoxProps,
+} from './Box/Box';
 export {Button} from './Button/Button';
 export {FormPasswordInput} from './Form/FormPasswordInput';
 export {FormTextInput} from './Form/FormTextInput';
@@ -10,6 +14,8 @@ export {PasswordInput} from './PasswordInput/PasswordInput';
 export type {PasswordInputProps} from './PasswordInput/PasswordInputProps';
 export {PostItem} from './PostItem/PostItem';
 export {ProfileAvatar} from './ProfileAvatar/ProfileAvatar';
+export type {ProfileAvatarProps} from './ProfileAvatar/ProfileAvatarProps';
+export {ProfileUser} from './ProfileUser/ProfileUser';
 export {Screen} from './Screen/Screen';
 export {Text} from './Text/Text';
 export type {TextProps} from './Text/TextProps';

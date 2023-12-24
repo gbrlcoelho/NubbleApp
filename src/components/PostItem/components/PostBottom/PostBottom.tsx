@@ -22,7 +22,7 @@ export const PostBottom = ({
   return (
     <Box marginTop="s16">
       <Text preset="paragraphMedium" bold>
-        {author.userName}
+        {author.username}
       </Text>
       <Text preset="paragraphMedium" color="gray1">
         {text}
