@@ -24,6 +24,7 @@ export const ScreenHeader = ({
       marginBottom="s24">
       {canGoBack && (
         <TouchableOpacityBox
+          testID="screen-back-button"
           flexDirection="row"
           alignItems="center"
           onPress={goBack}
