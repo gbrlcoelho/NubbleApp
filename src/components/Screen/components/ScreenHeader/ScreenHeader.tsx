@@ -16,6 +16,10 @@ export const ScreenHeader = ({
 
   const showBackLabel = Boolean(!title) && Boolean(!HeaderComponent);
 
+  if (!canGoBack && !title && !HeaderComponent) {
+    return null;
+  }
+
   return (
     <Box
       justifyContent="space-between"
