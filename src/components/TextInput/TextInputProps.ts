@@ -8,4 +8,5 @@ export interface TextInputProps extends RNTextInputProps {
   RightComponent?: React.ReactElement;
   LeftComponent?: React.ReactElement;
   boxProps?: BoxProps;
+  containerProps?: BoxProps;
 }
