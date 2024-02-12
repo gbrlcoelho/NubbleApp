@@ -1,11 +1,21 @@
 import React from 'react';
 import {ImageBackground, StyleSheet} from 'react-native';
 
+import {useNavigation} from '@react-navigation/native';
+
 import {Box, BoxProps, Button, Icon, Text} from '@components';
 
 import {HeaderProps} from './HeaderProps';
 
 export const Header = ({imageUri, imageWidth}: HeaderProps) => {
+  const {navigate} = useNavigation();
+
+  const navigateToPublishPost = () => {
+    if (imageUri) {
+      navigate('PublishPostScreen', {imageUri});
+    }
+  };
+
   return (
     <Box>
       <ImageBackground
@@ -14,7 +24,14 @@ export const Header = ({imageUri, imageWidth}: HeaderProps) => {
           styles.imageBackground,
           {width: imageWidth, height: imageWidth},
         ]}>
-        <Button preset="ghost" title="Escolher essa" marginBottom="s24" />
+        {Boolean(imageUri) && (
+          <Button
+            preset="ghost"
+            title="Escolher essa"
+            marginBottom="s24"
+            onPress={navigateToPublishPost}
+          />
+        )}
       </ImageBackground>
       <Box {...$optionsStyle}>
         <Text preset="headingSmall">Sua galeria</Text>
