@@ -31,4 +31,11 @@ jest.mock('@react-native-camera-roll/camera-roll', () => ({
   },
 }));
 
+jest.mock('../services/permission/permissionService', () => ({
+  permissionService: {
+    check: jest.fn(),
+    request: jest.fn(),
+  },
+}));
+
 initializeStorage(inMemoryStorage);
