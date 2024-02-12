@@ -1,5 +1,3 @@
-import {useRef} from 'react';
-
 import {useInfiniteQuery} from '@tanstack/react-query';
 
 import {QueryKeys} from '@infra';
@@ -10,21 +8,14 @@ export const useCameraRoll = (
   hasPermission: boolean,
   onInitialLoading?: (imageUri: string) => void,
 ) => {
-  const initialLoadingCalled = useRef(false);
-
   const {data, fetchNextPage, hasNextPage} = useInfiniteQuery({
     queryKey: [QueryKeys.CameralRollList],
     queryFn: ({pageParam}) => cameraRollService.getPhotos(pageParam),
-    getNextPageParam: ({cursor}) => cursor || undefined,
+    getNextPageParam: ({cursor}) => cursor,
     enabled: hasPermission,
     onSuccess: pageData => {
-      if (
-        !initialLoadingCalled.current &&
-        onInitialLoading &&
-        pageData.pages[0]?.photoList[0]
-      ) {
+      if (onInitialLoading && pageData.pages.length === 1) {
         onInitialLoading(pageData.pages[0].photoList[0]);
-        initialLoadingCalled.current = true;
       }
     },
   });
