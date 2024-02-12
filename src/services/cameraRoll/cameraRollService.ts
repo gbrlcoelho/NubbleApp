@@ -6,8 +6,6 @@ const getPhotos = async (cursor?: string): Promise<PhotoListPaginated> => {
   const photoPage = await CameraRoll.getPhotos({first: 12, after: cursor});
   const uriList = photoPage.edges.map(edge => edge.node.image.uri);
 
-  console.log('cursor', cursor);
-  console.log('has_next_page', photoPage.page_info.has_next_page);
   return {
     photoList: uriList,
     cursor: photoPage.page_info.end_cursor,
