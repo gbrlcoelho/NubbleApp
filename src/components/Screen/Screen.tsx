@@ -31,6 +31,7 @@ export const Screen = ({
           style={[{paddingTop: top, paddingBottom: bottom}, style]}
           {...boxProps}>
           <ScreenHeader
+            paddingHorizontal={noPaddingHorizontal ? 's24' : undefined}
             HeaderComponent={HeaderComponent}
             canGoBack={canGoBack}
             title={title}

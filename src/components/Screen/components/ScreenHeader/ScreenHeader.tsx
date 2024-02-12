@@ -11,6 +11,7 @@ export const ScreenHeader = ({
   canGoBack,
   title,
   HeaderComponent,
+  ...boxProps
 }: ScreenHeaderProps) => {
   const {goBack} = useNavigation();
 
@@ -25,7 +26,8 @@ export const ScreenHeader = ({
       justifyContent="space-between"
       flexDirection="row"
       alignItems="center"
-      marginBottom="s24">
+      marginBottom="s24"
+      {...boxProps}>
       {canGoBack && (
         <TouchableOpacityBox
           testID="screen-back-button"
