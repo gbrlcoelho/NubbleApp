@@ -9,5 +9,6 @@ export {MyProfileScreen} from './app/MyProfileScreen/MyProfileScreen';
 export {NewPostScreen} from './app/NewPostScreen/NewPostScreen';
 export {PostCommentScreen} from './app/PostCommentScreen/PostCommentScreen';
 export {ProfileScreen} from './app/ProfileScreen/ProfileScreen';
+export {PublishPostScreen} from './app/PublishPostScreen/PublishPostScreen';
 export {SearchScreen} from './app/SearchScreen/SearchScreen';
 export {SettingsScreen} from './app/SettingsScreen/SettingsScreen';
