@@ -6,4 +6,5 @@ export interface ScreenProps extends BoxProps {
   canGoBack?: boolean;
   scrollable?: boolean;
   title?: string;
+  noPaddingHorizontal?: boolean;
 }
