@@ -28,10 +28,14 @@ export const Button = ({
       {loading ? (
         <ActivityIndicator
           testID="activity-indicator"
-          color={buttonPreset.content}
+          color={buttonPreset.content.color}
         />
       ) : (
-        <Text preset="paragraphMedium" bold color={buttonPreset.content}>
+        <Text
+          preset="paragraphMedium"
+          bold
+          color={buttonPreset.content.color}
+          {...buttonPreset.content.textProps}>
           {title}
         </Text>
       )}

@@ -12,6 +12,7 @@ export {Icon} from './Icon/Icon';
 export type {IconBase, IconName, IconProps} from './Icon/IconProps';
 export {PasswordInput} from './PasswordInput/PasswordInput';
 export type {PasswordInputProps} from './PasswordInput/PasswordInputProps';
+export {PermissionManager} from './PermissionManager/PermissionManager';
 export {PostItem} from './PostItem/PostItem';
 export {ProfileAvatar} from './ProfileAvatar/ProfileAvatar';
 export type {ProfileAvatarProps} from './ProfileAvatar/ProfileAvatarProps';

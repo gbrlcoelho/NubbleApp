@@ -16,6 +16,7 @@ export const TextInput = ({
   RightComponent,
   LeftComponent,
   boxProps,
+  containerProps,
   ...rnTextInputProps
 }: TextInputProps) => {
   const {colors} = useAppTheme();
@@ -33,7 +34,9 @@ export const TextInput = ({
             {label}
           </Text>
         )}
-        <Box {...handleTextInputContainerStyle(errorMessage)}>
+        <Box
+          {...handleTextInputContainerStyle(errorMessage)}
+          {...containerProps}>
           {LeftComponent ? (
             <Box marginRight="s16" justifyContent="center">
               {LeftComponent}

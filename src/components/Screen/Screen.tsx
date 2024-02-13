@@ -14,6 +14,7 @@ export const Screen = ({
   title = '',
   style,
   HeaderComponent,
+  noPaddingHorizontal = false,
   ...boxProps
 }: ScreenProps) => {
   const {colors} = useAppTheme();
@@ -26,10 +27,11 @@ export const Screen = ({
     <KeyboardAvoidingView behavior={behavior} style={{flex: 1}}>
       <Container backgroundColor={colors.background}>
         <Box
-          paddingHorizontal="s24"
+          paddingHorizontal={noPaddingHorizontal ? undefined : 's24'}
           style={[{paddingTop: top, paddingBottom: bottom}, style]}
           {...boxProps}>
           <ScreenHeader
+            paddingHorizontal={noPaddingHorizontal ? 's24' : undefined}
             HeaderComponent={HeaderComponent}
             canGoBack={canGoBack}
             title={title}

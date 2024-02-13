@@ -19,4 +19,23 @@ jest.mock('@react-navigation/native', () => {
   };
 });
 
+jest.mock('@react-native-camera-roll/camera-roll', () => ({
+  CameralRoll: {
+    getPhotos: jest.fn(async () => ({
+      edges: [
+        {node: {image: {uri: 'photo1'}}},
+        {node: {image: {uri: 'photo2'}}},
+        {node: {image: {uri: 'photo3'}}},
+      ],
+    })),
+  },
+}));
+
+jest.mock('../services/permission/permissionService', () => ({
+  permissionService: {
+    check: jest.fn(),
+    request: jest.fn(),
+  },
+}));
+
 initializeStorage(inMemoryStorage);

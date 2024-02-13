@@ -1,3 +1,5 @@
+import {useMemo} from 'react';
+
 import {useInfiniteQuery} from '@tanstack/react-query';
 
 import {Page} from '@types';
@@ -37,7 +39,10 @@ export const usePaginatedList = <T>(
       staleTime: options?.staleTime,
     });
 
-  const list = data?.pages.flatMap(page => page.data) || [];
+  const list = useMemo(
+    () => data?.pages.flatMap(page => page.data) || [],
+    [data],
+  );
 
   return {
     list,
