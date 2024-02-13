@@ -1,3 +1,5 @@
+import {useMemo} from 'react';
+
 import {useInfiniteQuery} from '@tanstack/react-query';
 
 import {QueryKeys} from '@infra';
@@ -20,7 +22,10 @@ export const useCameraRoll = (
     },
   });
 
-  const photoList = data?.pages.flatMap(page => page.photoList) || [];
+  const photoList = useMemo(
+    () => data?.pages.flatMap(page => page.photoList) || [],
+    [data],
+  );
 
   return {
     photoList,
