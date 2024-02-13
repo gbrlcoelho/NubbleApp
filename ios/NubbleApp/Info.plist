@@ -65,6 +65,8 @@
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>To publish new posts</string>
+	<string>$(PRODUCT_NAME) needs access to your Photo Library.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>$(PRODUCT_NAME) needs access to your Camera.</string>
 </dict>
 </plist>
