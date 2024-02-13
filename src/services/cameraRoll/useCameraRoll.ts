@@ -10,7 +10,11 @@ export const useCameraRoll = (
   hasPermission: boolean,
   onInitialLoading?: (imageUri: string) => void,
 ) => {
-  const {data, fetchNextPage, hasNextPage} = useInfiniteQuery({
+  const {
+    data,
+    fetchNextPage: queryFetchNextPage,
+    hasNextPage,
+  } = useInfiniteQuery({
     queryKey: [QueryKeys.CameralRollList],
     queryFn: ({pageParam}) => cameraRollService.getPhotos(pageParam),
     getNextPageParam: ({cursor}) => cursor,
@@ -27,9 +31,15 @@ export const useCameraRoll = (
     [data],
   );
 
+  const fetchNextPage = () => {
+    if (hasPermission) {
+      queryFetchNextPage();
+    }
+  };
+
   return {
     photoList,
     hasNextPage,
-    fetchNextPage: () => fetchNextPage(),
+    fetchNextPage,
   };
 };
