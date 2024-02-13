@@ -14,7 +14,7 @@ export const PermissionManager = ({
   const {status, isLoading} = usePermission(permissionName);
 
   if (status === 'granted') {
-    return children;
+    return <>{children}</>;
   }
 
   return (
