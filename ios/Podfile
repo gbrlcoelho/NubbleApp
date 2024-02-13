@@ -6,7 +6,7 @@ platform :ios, min_ios_version_supported
 prepare_react_native_project!
 
 setup_permissions([
-  # 'Camera',
+  'Camera',
   'PhotoLibrary',
 ])
 
