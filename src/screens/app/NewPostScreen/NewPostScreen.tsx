@@ -7,7 +7,7 @@ import {
   Pressable,
 } from 'react-native';
 
-import {Screen} from '@components';
+import {PermissionManager, Screen} from '@components';
 import {AppTabScreenProps} from '@routes';
 import {useCameraRoll, usePermission} from '@services';
 
@@ -47,19 +47,23 @@ export const NewPostScreen = ({}: AppTabScreenProps<'NewPostScreen'>) => {
   }, []);
 
   return (
-    <Screen canGoBack title="Novo post" noPaddingHorizontal>
-      <FlatList
-        ref={flatListRef}
-        data={photoList}
-        keyExtractor={item => item}
-        renderItem={renderItem}
-        numColumns={4}
-        ListHeaderComponent={
-          <Header imageWidth={SCREEN_WIDTH} imageUri={selectedImage} />
-        }
-        onEndReachedThreshold={0.1}
-        onEndReached={fetchNextPage}
-      />
-    </Screen>
+    <PermissionManager
+      permissionName="photoLibrary"
+      description="Permita o Nubble acessar as imagens da sua galeria">
+      <Screen canGoBack title="Novo post" noPaddingHorizontal>
+        <FlatList
+          ref={flatListRef}
+          data={photoList}
+          keyExtractor={item => item}
+          renderItem={renderItem}
+          numColumns={4}
+          ListHeaderComponent={
+            <Header imageWidth={SCREEN_WIDTH} imageUri={selectedImage} />
+          }
+          onEndReachedThreshold={0.1}
+          onEndReached={fetchNextPage}
+        />
+      </Screen>
+    </PermissionManager>
   );
 };
