@@ -1,8 +1,13 @@
-import React, {useState} from 'react';
+import React, {useRef, useState} from 'react';
 import {Dimensions, StyleSheet} from 'react-native';
 
 import {useIsFocused} from '@react-navigation/native';
-import {Camera, useCameraDevice} from 'react-native-vision-camera';
+import {
+  Camera,
+  Templates,
+  useCameraDevice,
+  useCameraFormat,
+} from 'react-native-vision-camera';
 
 import {Box, Icon, PermissionManager} from '@components';
 import {useAppSafeArea, useAppState} from '@hooks';
@@ -13,15 +18,43 @@ const CONTROL_HEIGHT = (Dimensions.get('screen').height - SCREEN_WIDTH) / 2;
 const CONTROL_DIFF = 30;
 
 export const CameraScreen = ({navigation}: AppScreenProps<'CameraScreen'>) => {
+  const cameraRef = useRef<Camera>(null);
   const [flashOn, setFlashOn] = useState(false);
+  const [isReady, setIsReady] = useState(false);
   const {top} = useAppSafeArea();
-  const device = useCameraDevice('back');
+  const device = useCameraDevice('back', {
+    physicalDevices: [
+      'ultra-wide-angle-camera',
+      'wide-angle-camera',
+      'telephoto-camera',
+    ],
+  });
+
+  const format = useCameraFormat(device, Templates.Instagram);
   const isFocused = useIsFocused();
   const appState = useAppState();
 
   const isActive = isFocused && appState === 'active';
 
   const toggleFlash = () => setFlashOn(prev => !prev);
+
+  const onInitialized = () => {
+    setIsReady(true);
+  };
+
+  const takePhoto = async () => {
+    if (!cameraRef.current) {
+      return;
+    }
+    const photoFile = await cameraRef.current.takePhoto({
+      flash: flashOn ? 'on' : 'off',
+      qualityPrioritization: 'quality',
+    });
+
+    navigation.navigate('PublishPostScreen', {
+      imageUri: `file://${photoFile?.path}`,
+    });
+  };
 
   return (
     <PermissionManager
@@ -30,9 +63,14 @@ export const CameraScreen = ({navigation}: AppScreenProps<'CameraScreen'>) => {
       <Box flex={1}>
         {device != null && (
           <Camera
+            ref={cameraRef}
+            format={format}
             style={StyleSheet.absoluteFill}
             device={device}
             isActive={isActive}
+            onInitialized={onInitialized}
+            photo={true}
+            enableHighQualityPhotos={true}
           />
         )}
 
@@ -64,7 +102,14 @@ export const CameraScreen = ({navigation}: AppScreenProps<'CameraScreen'>) => {
             height={CONTROL_HEIGHT + CONTROL_DIFF}
             justifyContent="center"
             alignItems="center">
-            <Icon size={80} name="cameraClick" color="grayWhite" />
+            {isReady && (
+              <Icon
+                size={80}
+                name="cameraClick"
+                color="grayWhite"
+                onPress={takePhoto}
+              />
+            )}
           </Box>
         </Box>
       </Box>
