@@ -16,14 +16,12 @@ export const CameraScreen = ({navigation}: AppScreenProps<'CameraScreen'>) => {
   const [flashOn, setFlashOn] = useState(false);
   const {top} = useAppSafeArea();
   const device = useCameraDevice('back');
-
-  const toggleFlash = () => setFlashOn(prev => !prev);
-
   const isFocused = useIsFocused();
   const appState = useAppState();
+
   const isActive = isFocused && appState === 'active';
 
-  console.log({isActive, appState, isFocused});
+  const toggleFlash = () => setFlashOn(prev => !prev);
 
   return (
     <PermissionManager
