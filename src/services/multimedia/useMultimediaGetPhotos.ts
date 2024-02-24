@@ -4,9 +4,9 @@ import {useInfiniteQuery} from '@tanstack/react-query';
 
 import {QueryKeys} from '@infra';
 
-import {cameraRollService} from './cameraRollService';
+import {multimediaService} from './multimediaService';
 
-export const useCameraRoll = (
+export const useMultimediaGetPhotos = (
   hasPermission: boolean,
   onInitialLoading?: (imageUri: string) => void,
 ) => {
@@ -16,7 +16,7 @@ export const useCameraRoll = (
     hasNextPage,
   } = useInfiniteQuery({
     queryKey: [QueryKeys.CameralRollList],
-    queryFn: ({pageParam}) => cameraRollService.getPhotos(pageParam),
+    queryFn: ({pageParam}) => multimediaService.getPhotos(pageParam),
     getNextPageParam: ({cursor}) => cursor,
     enabled: hasPermission,
     onSuccess: pageData => {

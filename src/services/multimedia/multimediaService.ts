@@ -1,6 +1,6 @@
 import {CameraRoll} from '@react-native-camera-roll/camera-roll';
 
-import {PhotoListPaginated} from './cameralRollTypes';
+import {ImageForUpload, PhotoListPaginated} from './multimediaTypes';
 
 const getPhotos = async (cursor?: string): Promise<PhotoListPaginated> => {
   const photoPage = await CameraRoll.getPhotos({first: 12, after: cursor});
@@ -13,6 +13,16 @@ const getPhotos = async (cursor?: string): Promise<PhotoListPaginated> => {
   };
 };
 
-export const cameraRollService = {
+const prepareImageForUpload = (imageUri: string): ImageForUpload => {
+  // TODO: Implement this function
+  return {
+    uri: imageUri,
+    name: 'name',
+    type: 'image/png',
+  };
+};
+
+export const multimediaService = {
+  prepareImageForUpload,
   getPhotos,
 };

@@ -9,7 +9,7 @@ import {
 
 import {PermissionManager, Screen} from '@components';
 import {AppTabScreenProps} from '@routes';
-import {useCameraRoll, usePermission} from '@services';
+import {useMultimediaGetPhotos, usePermission} from '@services';
 
 import {Header} from './components';
 
@@ -22,7 +22,7 @@ export const NewPostScreen = ({}: AppTabScreenProps<'NewPostScreen'>) => {
   const [selectedImage, setSelectedImage] = useState<string>();
 
   const {status} = usePermission('photoLibrary');
-  const {photoList, fetchNextPage} = useCameraRoll(
+  const {photoList, fetchNextPage} = useMultimediaGetPhotos(
     status === 'granted',
     setSelectedImage,
   );
