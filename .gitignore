@@ -68,8 +68,5 @@ yarn-error.log
 # Environment variables
 .env
 
-# Scripts
-scripts/
-
 # Test
 coverage/

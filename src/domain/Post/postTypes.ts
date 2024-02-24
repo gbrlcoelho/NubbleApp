@@ -32,7 +32,7 @@ export interface PostAPI {
     is_online: boolean;
     full_name: string;
   };
-  status: string;
+  status?: string;
   meta: {
     like_count: string;
     favorite_count: string;

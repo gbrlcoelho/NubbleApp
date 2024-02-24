@@ -4,6 +4,7 @@ export {BellIcon} from './BellIcon';
 export {BellOnIcon} from './BellOnIcon';
 export {BookmarkFillIcon} from './BookmarkFillIcon';
 export {BookmarkIcon} from './BookmarkIcon';
+export {CameraClick} from './CameraClick';
 export {CameraIcon} from './CameraIcon';
 export {ChatIcon} from './ChatIcon';
 export {ChatOnIcon} from './ChatOnIcon';

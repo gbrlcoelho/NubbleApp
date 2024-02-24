@@ -1,5 +1,5 @@
 export * from './authCredentials';
-export * from './cameraRoll';
+export * from './multimedia';
 export * from './permission';
 export * from './searchHistory';
 export * from './storage';

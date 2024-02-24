@@ -17,6 +17,10 @@ export const Header = ({imageUri, imageWidth}: HeaderProps) => {
     }
   };
 
+  const navigateToCamera = () => {
+    navigate('CameraScreen');
+  };
+
   return (
     <Box>
       <ImageBackground
@@ -36,7 +40,7 @@ export const Header = ({imageUri, imageWidth}: HeaderProps) => {
       </ImageBackground>
       <Box {...$optionsStyle}>
         <Text preset="headingSmall">Sua galeria</Text>
-        <Icon name="camera" />
+        <Icon name="camera" onPress={navigateToCamera} />
       </Box>
     </Box>
   );
