@@ -11,6 +11,7 @@ export {
 
 export {postService} from './Post/postService';
 export type {Post} from './Post/postTypes';
+export {usePostCreate} from './Post/useCases/usePostCreate';
 export {usePostList} from './Post/useCases/usePostList';
 
 export {POST_COMMENT_PATH} from './PostComment/postCommentApi';
