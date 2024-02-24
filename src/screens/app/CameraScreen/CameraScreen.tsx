@@ -12,6 +12,7 @@ import {
 import {Box, Icon, PermissionManager} from '@components';
 import {useAppSafeArea, useAppState} from '@hooks';
 import {AppScreenProps} from '@routes';
+import {multimediaService} from '@services';
 
 const SCREEN_WIDTH = Dimensions.get('screen').width;
 const CONTROL_HEIGHT = (Dimensions.get('screen').height - SCREEN_WIDTH) / 2;
@@ -52,7 +53,7 @@ export const CameraScreen = ({navigation}: AppScreenProps<'CameraScreen'>) => {
     });
 
     navigation.navigate('PublishPostScreen', {
-      imageUri: `file://${photoFile?.path}`,
+      imageUri: multimediaService.prepareImageUri(photoFile.path),
     });
   };
 

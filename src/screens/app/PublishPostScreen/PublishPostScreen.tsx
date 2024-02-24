@@ -25,7 +25,6 @@ export const PublishPostScreen = ({
   const [description, setDescription] = useState('');
 
   const publishPost = () => {
-    console.log('description', description);
     createPost({description, imageUri});
   };
 
