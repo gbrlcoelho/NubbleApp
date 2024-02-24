@@ -5,7 +5,7 @@ import {MutationOptions, QueryKeys} from '@infra';
 import {ImageForUpload, multimediaService} from '@services';
 
 export const usePostCreate = (options?: MutationOptions<Post>) => {
-  const {invalidateQueries} = useQueryClient();
+  const queryClient = useQueryClient();
 
   const {mutate, isLoading, isError} = useMutation<
     Post,
@@ -14,7 +14,7 @@ export const usePostCreate = (options?: MutationOptions<Post>) => {
   >({
     mutationFn: ({text, imageCover}) => postService.create(text, imageCover),
     onSuccess: post => {
-      invalidateQueries({queryKey: [QueryKeys.PostList]});
+      queryClient.invalidateQueries({queryKey: [QueryKeys.PostList]});
       if (options?.onSuccess) {
         options.onSuccess(post);
       }
@@ -26,14 +26,14 @@ export const usePostCreate = (options?: MutationOptions<Post>) => {
     },
   });
 
-  const createPost = ({
+  const createPost = async ({
     description,
     imageUri,
   }: {
     description: string;
     imageUri: string;
   }) => {
-    const imageCover = multimediaService.prepareImageForUpload(imageUri);
+    const imageCover = await multimediaService.prepareImageForUpload(imageUri);
 
     mutate({text: description, imageCover});
   };
