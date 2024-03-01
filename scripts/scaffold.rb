@@ -1,4 +1,4 @@
-def camel_case?(str)
+def pascal_case?(str)
   str =~ /^[A-Z][a-zA-Z]*$/
 end
 
@@ -11,13 +11,13 @@ def create_file(path, content)
 end
 
 def get_component_name
-  print "Provide a name for your component in CamelCase: "
+  print "Provide a name for your component in PascalCase: "
   gets.chomp
 end
 
 def validate_component_name(name)
-  unless camel_case?(name)
-    puts "Component name must be in CamelCase. Please provide a valid name."
+  unless pascal_case?(name)
+    puts "Component name must be in PascalCase. Please provide a valid name."
     exit
   end
 
