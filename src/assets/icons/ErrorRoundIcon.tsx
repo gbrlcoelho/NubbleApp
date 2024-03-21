@@ -3,11 +3,11 @@ import React from 'react';
 import {Circle, Path, Svg} from 'react-native-svg';
 
 import {IconBase} from '@components';
-import {palette} from '@theme';
+import {colors} from '@theme';
 
 export const ErrorRoundIcon = ({
   size = 48,
-  color = palette.redError,
+  color = colors.palette.redError,
 }: IconBase) => {
   return (
     <Svg width={size} height={size} viewBox="0 0 48 48" fill="none">

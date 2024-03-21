@@ -37,6 +37,7 @@ import {ThemeColors} from '@theme';
 export interface IconProps {
   name: IconName;
   color?: ThemeColors;
+  fillColor?: ThemeColors;
   size?: number;
   onPress?: () => void;
 }
@@ -44,6 +45,7 @@ export interface IconProps {
 export interface IconBase {
   size?: number;
   color?: string;
+  fillColor?: string;
 }
 
 export const iconRegistry = {

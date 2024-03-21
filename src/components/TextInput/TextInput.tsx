@@ -36,7 +36,8 @@ export const TextInput = ({
         )}
         <Box
           {...handleTextInputContainerStyle(errorMessage)}
-          {...containerProps}>
+          {...containerProps}
+          backgroundColor="grayWhite">
           {LeftComponent ? (
             <Box marginRight="s16" justifyContent="center">
               {LeftComponent}

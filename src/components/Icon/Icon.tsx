@@ -8,6 +8,7 @@ import {IconProps, iconRegistry} from './IconProps';
 export const Icon = ({
   name,
   color = 'backgroundContrast',
+  fillColor = 'backgroundContrast',
   size,
   onPress,
 }: IconProps) => {
@@ -15,13 +16,19 @@ export const Icon = ({
 
   const SVGIcon = iconRegistry[name];
 
+  const iconProps: React.ComponentProps<typeof SVGIcon> = {
+    size,
+    color: colors[color],
+    fillColor,
+  };
+
   if (onPress) {
     return (
       <Pressable testID={name} onPress={onPress} hitSlop={10}>
-        <SVGIcon size={size} color={colors[color]} />
+        <SVGIcon {...iconProps} />
       </Pressable>
     );
   }
 
-  return <SVGIcon size={size} color={colors[color]} />;
+  return <SVGIcon {...iconProps} />;
 };
