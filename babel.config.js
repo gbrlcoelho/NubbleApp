@@ -15,7 +15,7 @@ module.exports = {
         root: ['.'],
         alias: {
           '@components': './src/components',
-          '@theme': './src/theme/theme.ts',
+          '@theme': './src/theme',
           '@icons': './src/assets/icons',
           '@hooks': './src/hooks',
           '@screens': './src/screens',
