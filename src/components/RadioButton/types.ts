@@ -8,6 +8,11 @@ export interface RadioButtonItemProps extends RadioButtonProps {
   description?: string;
 }
 
-export interface RadioButtonSelectorProps {
-  items: RadioButtonItemProps[];
+export interface RadioButtonSelectorProps<T extends Record<string, any>> {
+  items: T[];
+  selectedItem?: T;
+  onSelect: (item: T) => void;
+  labelKey: keyof T;
+  descriptionKey: keyof T;
+  valueKey: keyof T;
 }
