@@ -18,6 +18,7 @@ export {ProfileAvatar} from './ProfileAvatar/ProfileAvatar';
 export type {ProfileAvatarProps} from './ProfileAvatar/ProfileAvatarProps';
 export {ProfileUser} from './ProfileUser/ProfileUser';
 export {Screen} from './Screen/Screen';
+export {Separator} from './Separator/Separator';
 export {Text} from './Text/Text';
 export type {TextProps} from './Text/TextProps';
 export {TextInput} from './TextInput/TextInput';
