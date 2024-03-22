@@ -17,6 +17,7 @@ export {PostItem} from './PostItem/PostItem';
 export {ProfileAvatar} from './ProfileAvatar/ProfileAvatar';
 export type {ProfileAvatarProps} from './ProfileAvatar/ProfileAvatarProps';
 export {ProfileUser} from './ProfileUser/ProfileUser';
+export {RadioButton, RadioButtonItem, RadioButtonSelector} from './RadioButton';
 export {Screen} from './Screen/Screen';
 export {Separator} from './Separator/Separator';
 export {Text} from './Text/Text';
