@@ -16,7 +16,7 @@ export const SettingsScreen = ({
     {label: 'Termos de uso', onPress: () => {}},
     {label: 'Política de privacidade', onPress: () => {}},
     {
-      label: 'Modo Escuro',
+      label: 'Modo escuro',
       onPress: () => navigation.navigate('DarkModeScreen'),
     },
   ];
