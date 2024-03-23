@@ -3,6 +3,7 @@ import {FlatList, ListRenderItem} from 'react-native';
 
 import {Box} from '@components';
 import {OnboardingScreenProps} from '@routes';
+import {useSettingsService} from '@services';
 
 import {
   OnboardingPage,
@@ -14,11 +15,9 @@ export const OnboardingScreen =
   ({}: OnboardingScreenProps<'OnboardingScreen'>) => {
     const [pageIndex, setPageIndex] = useState(0);
 
-    const flatlistRef = useRef<FlatList<OnboardingPageItem>>(null);
+    const {onFinishOnboarding} = useSettingsService();
 
-    const onFinishOnboarding = useCallback(() => {
-      // TODO: Implement onFinishOnboarding
-    }, []);
+    const flatlistRef = useRef<FlatList<OnboardingPageItem>>(null);
 
     const onPressNext = useCallback(() => {
       const isLastPage = pageIndex === onboardingPages.length - 1;
