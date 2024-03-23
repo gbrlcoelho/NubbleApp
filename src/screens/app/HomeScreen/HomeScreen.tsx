@@ -13,8 +13,7 @@ import {PostItem, Screen} from '@components';
 import {Post, usePostList} from '@domain';
 import {AppTabScreenProps} from '@routes';
 
-import {HomeEmpty} from './components/HomeEmpty/HomeEmpty';
-import {HomeHeader} from './components/HomeHeader/HomeHeader';
+import {HomeEmpty, HomeHeader} from './components';
 
 export const HomeScreen = ({}: AppTabScreenProps<'HomeScreen'>) => {
   const flatlistRef = useRef<FlatList<Post>>(null);

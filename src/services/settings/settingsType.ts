@@ -7,6 +7,8 @@ export type ThemePreference = AppColorScheme | 'system';
 export type SettingsStore = {
   appColorScheme: AppColorScheme;
   themePreference: ThemePreference;
+  showOnboarding: boolean;
   setThemePreference: (themePreference: ThemePreference) => void;
   onSystemChange: (colorScheme: ColorSchemeName) => void;
+  onFinishOnboarding: () => void;
 };
