@@ -6,6 +6,7 @@ import {
   AppStackParamList,
   AppTabBottomTabParamList,
   AuthStackParamList,
+  OnboardingStackParamList,
 } from '@routes';
 
 declare global {
@@ -19,6 +20,10 @@ export type AuthScreenProps<RouteName extends keyof AuthStackParamList> =
 
 export type AppScreenProps<RouteName extends keyof AppStackParamList> =
   NativeStackScreenProps<AppStackParamList, RouteName>;
+
+export type OnboardingScreenProps<
+  RouteName extends keyof OnboardingStackParamList,
+> = NativeStackScreenProps<OnboardingStackParamList, RouteName>;
 
 export type AppTabScreenProps<
   RouteName extends keyof AppTabBottomTabParamList,
