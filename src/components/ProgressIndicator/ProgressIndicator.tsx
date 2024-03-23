@@ -7,9 +7,10 @@ import {ProgressIndicatorProps} from './types';
 export const ProgressIndicator = ({
   currentIndex,
   total,
+  ...boxProps
 }: ProgressIndicatorProps) => {
   return (
-    <Box flexDirection="row" alignItems="center" gap="s12">
+    <Box flexDirection="row" alignItems="center" gap="s12" {...boxProps}>
       {Array.from({length: total}, (_, index) => {
         return (
           <Box
