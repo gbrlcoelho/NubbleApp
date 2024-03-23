@@ -1,4 +1,4 @@
-type ThemePreference = 'light' | 'dark' | 'system';
+import {ThemePreference} from '@services';
 
 export interface Option {
   label: string;
