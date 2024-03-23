@@ -6,7 +6,7 @@ import {useAppColor} from '@services';
 import {ImageHeaderProps} from './types';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
-const SCREEN_HEIGHT = '100%';
+const SCREEN_HEIGHT = '90%';
 
 export const ImageHeader = ({image}: ImageHeaderProps) => {
   const appColor = useAppColor();

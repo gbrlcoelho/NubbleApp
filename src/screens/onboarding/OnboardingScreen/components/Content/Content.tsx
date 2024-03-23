@@ -1,15 +1,18 @@
 import React from 'react';
 
-import {Box, Text} from '@components';
+import {Box, ProgressIndicator, Text} from '@components';
 
 import {OnboardingPageItem} from '../OnboardingPage/types';
 
 export const Content = ({
   title,
   subtitle,
+  total,
+  index,
 }: Omit<OnboardingPageItem, 'image'>) => {
   return (
-    <Box>
+    <Box gap="s16">
+      <ProgressIndicator total={total} currentIndex={index} marginBottom="s8" />
       <Text preset="headingLarge">
         {title.map(({text, isHighlighted}) => (
           <Text
@@ -20,7 +23,9 @@ export const Content = ({
           </Text>
         ))}
       </Text>
-      <Text preset="paragraphLarge">{subtitle}</Text>
+      <Text color="paragraph" preset="paragraphLarge">
+        {subtitle}
+      </Text>
     </Box>
   );
 };
