@@ -14,3 +14,5 @@ export {ProfileScreen} from './app/ProfileScreen/ProfileScreen';
 export {PublishPostScreen} from './app/PublishPostScreen/PublishPostScreen';
 export {SearchScreen} from './app/SearchScreen/SearchScreen';
 export {SettingsScreen} from './app/SettingsScreen/SettingsScreen';
+
+export {OnboardingScreen} from './onboarding/OnboardingScreen/OnboardingScreen';
