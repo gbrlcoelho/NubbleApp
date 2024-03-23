@@ -52,7 +52,7 @@ export const PostCommentItem = ({
           <Text preset="paragraphSmall" bold>
             {postComment.author.username}
           </Text>
-          <Text preset="paragraphSmall" color="gray1">
+          <Text preset="paragraphSmall" color="paragraph">
             {postComment.message} - {postComment.createdAtRelative}
           </Text>
         </Box>

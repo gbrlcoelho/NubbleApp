@@ -34,7 +34,7 @@ export const ScreenHeader = ({
           flexDirection="row"
           alignItems="center"
           onPress={goBack}
-          marginRight="s10">
+          marginRight={showBackLabel ? 's10' : undefined}>
           <Icon name="arrowLeft" color="primary" size={ICON_SIZE} />
           {showBackLabel && (
             <Text preset="paragraphMedium" semiBold marginLeft="s8">

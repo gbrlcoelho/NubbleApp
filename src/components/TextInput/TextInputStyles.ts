@@ -1,6 +1,7 @@
 import {TextStyle} from 'react-native';
 
 import {BoxProps} from '@components';
+import {colors} from '@theme';
 
 import {$fontFamily, $fontSizes} from '../Text/TextPresets';
 
@@ -8,6 +9,7 @@ export const $textInputStyle: TextStyle = {
   padding: 0,
   flexGrow: 1,
   flexShrink: 1,
+  color: colors.palette.grayBlack,
   fontFamily: $fontFamily.regular,
   ...$fontSizes.paragraphMedium,
 };

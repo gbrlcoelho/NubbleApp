@@ -4,6 +4,7 @@ export {SignUpScreen} from './auth/SignUpScreen/SignUpScreen';
 export {SuccessScreen} from './auth/SuccessScreen/SuccessScreen';
 
 export {CameraScreen} from './app/CameraScreen/CameraScreen';
+export {DarkModeScreen} from './app/DarkModeScreen/DarkModeScreen';
 export {FavoritesScreen} from './app/FavoritesScreen/FavoritesScreen';
 export {HomeScreen} from './app/HomeScreen/HomeScreen';
 export {MyProfileScreen} from './app/MyProfileScreen/MyProfileScreen';

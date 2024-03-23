@@ -24,7 +24,7 @@ export const PostBottom = ({
       <Text preset="paragraphMedium" bold>
         {author.username}
       </Text>
-      <Text preset="paragraphMedium" color="gray1">
+      <Text preset="paragraphMedium" color="paragraph">
         {text}
       </Text>
       {commentText && (
