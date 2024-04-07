@@ -20,10 +20,10 @@ import {
 } from '@test';
 
 beforeAll(() => {
-  server.listen();
-  Object.defineProperty(global, 'performance', {
+  Object.defineProperty(global, 'fetch', {
     writable: true,
   });
+  server.listen();
   jest.useFakeTimers();
 });
 
