@@ -7,7 +7,7 @@ on:
 
 jobs:
   pull-request-checks:
-    runs-on: macos-14
+    runs-on: [self-hosted, version-2.314.1]
     steps:
       - uses: actions/checkout@v4
 
