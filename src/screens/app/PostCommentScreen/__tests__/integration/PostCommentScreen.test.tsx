@@ -21,6 +21,9 @@ import {
 
 beforeAll(() => {
   server.listen();
+  Object.defineProperty(global, 'performance', {
+    writable: true,
+  });
   jest.useFakeTimers();
 });
 
