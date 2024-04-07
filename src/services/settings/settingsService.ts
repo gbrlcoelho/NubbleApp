@@ -1,5 +1,7 @@
 import {Appearance, ColorSchemeName, Platform, StatusBar} from 'react-native';
 
+import BootSplash from 'react-native-bootsplash';
+
 import {colors} from '@theme';
 
 import {AppColorScheme, ThemePreference} from './settingsType';
@@ -41,8 +43,20 @@ const handleStatusBarStyle = (colorScheme: AppColorScheme) => {
   }
 };
 
+const hideSplashScreen = async () => {
+  try {
+    const isVisible = await BootSplash.isVisible();
+    if (isVisible) {
+      await BootSplash.hide({fade: true});
+    }
+  } catch (error) {
+    BootSplash.hide();
+  }
+};
+
 export const settingsService = {
   onChangeThemePreference,
   onSystemChange,
   handleStatusBarStyle,
+  hideSplashScreen,
 };
