@@ -68,5 +68,5 @@ yarn-error.log
 # Environment variables
 .env
 
-# Test
-coverage/
+# testing
+/coverage
