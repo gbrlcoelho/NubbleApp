@@ -1,3 +1,4 @@
+import {describe, expect, it, jest} from '@jest/globals';
 import {renderHook, waitFor} from 'test-utils';
 
 import {authService, useAuthSignIn} from '@domain';
@@ -7,7 +8,10 @@ import {mockedAuthCredentials} from './mockedData/mocks';
 const mockedSaveCredentials = jest.fn();
 
 jest.mock('@services', () => {
-  const originalModule = jest.requireActual('@services');
+  const originalModule = jest.requireActual('@services') as Record<
+    string,
+    unknown
+  >;
   return {
     ...originalModule,
     useAuthCredentials: () => ({

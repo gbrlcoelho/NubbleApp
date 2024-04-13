@@ -1,6 +1,8 @@
 import React from 'react';
 import {View} from 'react-native';
 
+import {jest} from '@jest/globals';
+
 export const Camera = () => {
   return <View />;
 };
