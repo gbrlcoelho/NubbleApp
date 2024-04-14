@@ -7,7 +7,7 @@ on:
 
 jobs:
   pull-request-checks:
-    runs-on: [self-hosted, version-2.314.1]
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
