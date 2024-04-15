@@ -1,5 +1,6 @@
 import React from 'react';
 
+import {beforeEach, describe, expect, it, jest} from '@jest/globals';
 import {fireEvent, render, screen} from 'test-utils';
 
 import {PostBottom} from '../PostBottom';
@@ -9,7 +10,9 @@ import {mockedPost} from './mockedData/mockedPost';
 const mockedNavigate = jest.fn();
 
 jest.mock('@react-navigation/native', () => {
-  const originalModule = jest.requireActual('@react-navigation/native');
+  const originalModule = jest.requireActual(
+    '@react-navigation/native',
+  ) as Record<string, unknown>;
   return {
     ...originalModule,
     useNavigation: () => ({

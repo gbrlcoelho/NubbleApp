@@ -1,5 +1,6 @@
 import React from 'react';
 
+import {describe, expect, it, jest} from '@jest/globals';
 import {fireEvent, render, screen} from 'test-utils';
 
 import {IconProps, PasswordInput} from '@components';

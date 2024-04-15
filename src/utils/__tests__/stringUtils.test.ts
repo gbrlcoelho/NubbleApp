@@ -1,3 +1,5 @@
+import {describe, expect, it} from '@jest/globals';
+
 import {stringUtils} from '@utils';
 
 describe('stringUtils', () => {
