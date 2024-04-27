@@ -44,7 +44,7 @@ def create_domain_files(name, folder, name_downcase)
   api_file_content = <<~HEREDOC
   import {api} from '@api';
 
-  export const #{name_downcase}API = {};
+  export const #{name_downcase}Api = {};
   HEREDOC
   create_file("#{folder}/#{name_downcase}Api.ts", api_file_content)
 
