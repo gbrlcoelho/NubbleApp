@@ -18,6 +18,7 @@ const getMyReactions = async (
   const postReactionApiPage = await postReactionApi.getMyReactions({
     page,
     per_page: PER_PAGE,
+    reaction_type: reactionType,
   });
 
   return apiAdapter.toPageModel(
