@@ -9,6 +9,7 @@ export const PostActions = ({
   commentCount,
   reactionCount,
   favoriteCount,
+  hideCommentAction,
 }: PostActionsProps) => {
   const likePost = () => {
     // TODO: Implement likePost
@@ -31,6 +32,7 @@ export const PostActions = ({
         text={reactionCount}
       />
       <Item
+        disabled={hideCommentAction}
         marked={false}
         onPress={navigateToComments}
         icon={{default: 'comment', marked: 'comment'}}

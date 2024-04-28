@@ -7,17 +7,20 @@ import {PostBottom} from './components/PostBottom/PostBottom';
 import {PostImage} from './components/PostImage/PostImage';
 import {PostItemProps} from './PostItemProps';
 
-export const PostItem = ({post}: PostItemProps) => {
+export const PostItem = ({post, hideCommentAction}: PostItemProps) => {
   return (
     <Box marginBottom="s24" paddingHorizontal="s24">
       <ProfileUser user={post.author} />
       <PostImage imageURL={post.imageURL} />
       <PostActions
+        hideCommentAction={hideCommentAction}
         reactionCount={post.reactionCount}
         commentCount={post.commentCount}
         favoriteCount={post.favoriteCount}
       />
+
       <PostBottom
+        hideCommentAction={hideCommentAction}
         id={post.id}
         author={post.author}
         text={post.text}
