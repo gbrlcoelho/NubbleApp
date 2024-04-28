@@ -20,7 +20,13 @@ const create = async (
   return postAdapter.toPost(postAPIData);
 };
 
+const getById = async (postId: number): Promise<Post> => {
+  const postAPIData = await postApi.getById(postId.toString());
+  return postAdapter.toPost(postAPIData);
+};
+
 export const postService = {
   getList,
   create,
+  getById,
 };

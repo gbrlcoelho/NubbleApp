@@ -13,6 +13,7 @@ export {postService} from './Post/postService';
 export type {Post, PostAPI} from './Post/postTypes';
 export {usePostCreate} from './Post/useCases/usePostCreate';
 
+export {usePostGetById} from './Post/useCases/usePostGetById';
 export {POST_COMMENT_PATH} from './PostComment/postCommentApi';
 export {postCommentService} from './PostComment/postCommentService';
 export type {PostComment, PostCommentAPI} from './PostComment/postCommentTypes';
