@@ -12,7 +12,6 @@ export {
 export {postService} from './Post/postService';
 export type {Post, PostAPI} from './Post/postTypes';
 export {usePostCreate} from './Post/useCases/usePostCreate';
-export {usePostList} from './Post/useCases/usePostList';
 
 export {POST_COMMENT_PATH} from './PostComment/postCommentApi';
 export {postCommentService} from './PostComment/postCommentService';
@@ -28,4 +27,4 @@ export {USER_PATH} from './User/userApi';
 export {userService} from './User/userService';
 export type {User, UserAPI} from './User/userTypes';
 
-export {};
+export {postReactionService} from './PostReaction/postReactionService';
