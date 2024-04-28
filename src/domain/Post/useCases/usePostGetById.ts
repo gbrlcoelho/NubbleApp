@@ -5,7 +5,7 @@ import {QueryKeys} from '@infra';
 
 export const usePostGetById = (id: number, enabled: boolean) => {
   const {data, isLoading, isError, refetch, isFetching} = useQuery({
-    queryKey: [QueryKeys.PostGetByID, id],
+    queryKey: [QueryKeys.PostGetById, id],
     queryFn: () => postService.getById(id),
     staleTime: 1000 * 30,
     enabled,
