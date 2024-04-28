@@ -32,4 +32,6 @@ export {postReactionService} from './PostReaction/postReactionService';
 export type {
   PostReaction,
   PostReactionAPI,
+  PostReactionType,
 } from './PostReaction/postReactionTypes';
+export {useReactToPost} from './PostReaction/useCases/useReactToPost';

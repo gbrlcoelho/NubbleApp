@@ -39,4 +39,17 @@ const reactToPost = async (
   return postReactionAdapter.toPostReactionBase(postReactionBaseAPI);
 };
 
-export const postReactionService = {getMyReactions, reactToPost};
+const hasReactedToPost = (
+  postReactions: Pick<PostReaction, 'emojiType'>[],
+  postReactionType: PostReactionType,
+) => {
+  return postReactions.some(
+    reaction => reaction.emojiType === postReactionType,
+  );
+};
+
+export const postReactionService = {
+  getMyReactions,
+  reactToPost,
+  hasReactedToPost,
+};
