@@ -8,8 +8,8 @@ export type ItemTConstraints = {id: number | string};
 
 export interface InfinityScrollListProps<ItemT extends ItemTConstraints> {
   renderItem: FlatListProps<ItemT>['renderItem'];
-  flatListProps: Partial<Omit<FlatListProps<ItemT>, 'renderItem'>>;
-  emptyListProps: Pick<EmptyListProps, 'emptyMessage' | 'errorMessage'>;
+  flatListProps?: Partial<Omit<FlatListProps<ItemT>, 'renderItem'>>;
+  emptyListProps?: Pick<EmptyListProps, 'emptyMessage' | 'errorMessage'>;
   queryKey: QueryKeys;
   getList: Parameters<typeof usePaginatedList<ItemT>>[1];
 }
