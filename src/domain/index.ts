@@ -29,3 +29,7 @@ export {userService} from './User/userService';
 export type {User, UserAPI} from './User/userTypes';
 
 export {postReactionService} from './PostReaction/postReactionService';
+export type {
+  PostReaction,
+  PostReactionAPI,
+} from './PostReaction/postReactionTypes';
