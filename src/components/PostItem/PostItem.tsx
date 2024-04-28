@@ -12,13 +12,7 @@ export const PostItem = ({post, hideCommentAction}: PostItemProps) => {
     <Box marginBottom="s24" paddingHorizontal="s24">
       <ProfileUser user={post.author} />
       <PostImage imageURL={post.imageURL} />
-      <PostActions
-        hideCommentAction={hideCommentAction}
-        reactionCount={post.reactionCount}
-        commentCount={post.commentCount}
-        favoriteCount={post.favoriteCount}
-      />
-
+      <PostActions post={post} hideCommentAction={hideCommentAction} />
       <PostBottom
         hideCommentAction={hideCommentAction}
         id={post.id}

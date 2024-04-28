@@ -1,6 +1,6 @@
 import {Post} from '@domain';
 
-export type PostActionsProps = Pick<
-  Post,
-  'reactionCount' | 'commentCount' | 'favoriteCount'
-> & {hideCommentAction?: boolean};
+export interface PostActionsProps {
+  hideCommentAction?: boolean;
+  post: Post;
+}

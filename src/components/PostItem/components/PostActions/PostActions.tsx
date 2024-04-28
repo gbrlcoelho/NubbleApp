@@ -5,12 +5,7 @@ import {Box} from '@components';
 import {Item} from './components/Item';
 import {PostActionsProps} from './PostActionsProps';
 
-export const PostActions = ({
-  commentCount,
-  reactionCount,
-  favoriteCount,
-  hideCommentAction,
-}: PostActionsProps) => {
+export const PostActions = ({hideCommentAction, post}: PostActionsProps) => {
   const likePost = () => {
     // TODO: Implement likePost
   };
@@ -29,20 +24,20 @@ export const PostActions = ({
         marked
         onPress={likePost}
         icon={{default: 'heart', marked: 'heartFill'}}
-        text={reactionCount}
+        text={post.reactionCount}
       />
       <Item
         disabled={hideCommentAction}
         marked={false}
         onPress={navigateToComments}
         icon={{default: 'comment', marked: 'comment'}}
-        text={commentCount}
+        text={post.commentCount}
       />
       <Item
         marked={false}
         onPress={favoritePost}
         icon={{default: 'bookmark', marked: 'bookmarkFill'}}
-        text={favoriteCount}
+        text={post.favoriteCount}
       />
     </Box>
   );
