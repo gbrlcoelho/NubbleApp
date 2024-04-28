@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {Keyboard} from 'react-native';
 
-import {TextMessage} from '@components';
+import {Box, TextMessage} from '@components';
 import {usePostCommentCreate} from '@domain';
 
 import {PostCommentTextMessageProps} from './PostCommentTextMessageProps';
@@ -18,11 +18,13 @@ export const PostCommentTextMessage = ({
   const [message, setMessage] = useState('');
 
   return (
-    <TextMessage
-      placeholder="Adicione um comentário"
-      value={message}
-      onChangeText={setMessage}
-      onPressSend={createComment}
-    />
+    <Box paddingHorizontal="s24">
+      <TextMessage
+        placeholder="Adicione um comentário"
+        value={message}
+        onChangeText={setMessage}
+        onPressSend={createComment}
+      />
+    </Box>
   );
 };
