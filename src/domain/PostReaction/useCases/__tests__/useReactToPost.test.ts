@@ -64,12 +64,12 @@ describe('useReactToPost', () => {
       result.current.reactToPost();
     });
 
-    await waitFor(() => expect(result.current.hasReacted).toBe(false));
-    await waitFor(() => {
+    await waitFor(() => expect(result.current.hasReacted).toBe(true));
+    await waitFor(() =>
       expect(result.current.reactionCount).toBe(
-        mockedPostWithLike.post.reactionCount - 1,
-      );
-    });
+        mockedPostWithLike.post.reactionCount,
+      ),
+    );
 
     expect(mockedOnError).toHaveBeenCalledWith(errorMessage);
   });
