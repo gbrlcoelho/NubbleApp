@@ -1,56 +1,25 @@
-import React, {useCallback, useRef} from 'react';
-import {
-  FlatList,
-  ListRenderItem,
-  RefreshControl,
-  StyleProp,
-  ViewStyle,
-} from 'react-native';
+import React, {useCallback} from 'react';
+import {ListRenderItem, StyleProp, ViewStyle} from 'react-native';
 
-import {useScrollToTop} from '@react-navigation/native';
-
-import {PostItem, Screen} from '@components';
-import {Post, usePostList} from '@domain';
+import {InfinityScrollList, PostItem, Screen} from '@components';
+import {Post, postService} from '@domain';
+import {QueryKeys} from '@infra';
 import {AppTabScreenProps} from '@routes';
 
-import {HomeEmpty, HomeHeader} from './components';
+import {HomeHeader} from './components';
 
 export const HomeScreen = ({}: AppTabScreenProps<'HomeScreen'>) => {
-  const flatlistRef = useRef<FlatList<Post>>(null);
-  useScrollToTop(flatlistRef);
-  const {
-    list: postList,
-    isError,
-    isLoading,
-    refresh,
-    fetchNextPage,
-  } = usePostList();
-
-  const contentContainerStyleFlex = postList.length === 0 ? 1 : undefined;
-
   const renderItem: ListRenderItem<Post> = useCallback(({item}) => {
     return <PostItem post={item} />;
   }, []);
 
   return (
     <Screen style={$screen}>
-      <FlatList
-        ref={flatlistRef}
-        data={postList}
-        keyExtractor={item => item.id.toString()}
+      <InfinityScrollList
         renderItem={renderItem}
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={{flex: contentContainerStyleFlex}}
-        onEndReached={fetchNextPage}
-        onEndReachedThreshold={0.1}
-        refreshing={isLoading}
-        refreshControl={
-          <RefreshControl refreshing={isLoading} onRefresh={refresh} />
-        }
-        ListHeaderComponent={<HomeHeader />}
-        ListEmptyComponent={
-          <HomeEmpty loading={isLoading} error={isError} refresh={refresh} />
-        }
+        queryKey={QueryKeys.PostList}
+        getList={postService.getList}
+        flatListProps={{ListHeaderComponent: <HomeHeader />}}
       />
     </Screen>
   );

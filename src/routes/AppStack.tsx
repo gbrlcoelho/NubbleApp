@@ -19,7 +19,7 @@ export type AppStackParamList = {
   SettingsScreen: undefined;
   DarkModeScreen: undefined;
   SearchScreen: undefined;
-  PostCommentScreen: {postId: number; postAuthorId: number};
+  PostCommentScreen: {postId: number; postAuthorId: number; showPost?: boolean};
   ProfileScreen: {userId: number};
   PublishPostScreen: {imageUri: string};
   CameraScreen: undefined;

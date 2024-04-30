@@ -6,15 +6,17 @@ interface ItemProps {
   onPress: () => void;
   marked: boolean;
   text: number;
+  disabled?: boolean;
   icon: {
     default: IconProps['name'];
     marked: IconProps['name'];
   };
 }
 
-export const Item = ({onPress, icon, marked, text}: ItemProps) => {
+export const Item = ({onPress, icon, marked, text, disabled}: ItemProps) => {
   return (
     <TouchableOpacityBox
+      disabled={disabled}
       flexDirection="row"
       alignItems="center"
       marginRight="s24"

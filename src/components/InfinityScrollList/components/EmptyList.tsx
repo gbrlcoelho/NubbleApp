@@ -2,12 +2,18 @@ import React from 'react';
 
 import {ActivityIndicator, Box, Button, Text} from '@components';
 
-import {HomeEmptyProps} from './HomeEmptyProps';
+import {EmptyListProps} from './EmptyListProps';
 
-export const HomeEmpty = ({loading, error, refresh}: HomeEmptyProps) => {
+export const EmptyList = ({
+  emptyMessage = 'Não há publicações no seu feed 😥',
+  errorMessage = 'Não foi possível carregar o feed 😥',
+  loading,
+  error,
+  refresh,
+}: EmptyListProps) => {
   let component = (
     <Text bold preset="paragraphMedium">
-      Não há publicações no seu feed 😥
+      {emptyMessage}
     </Text>
   );
 
@@ -19,7 +25,7 @@ export const HomeEmpty = ({loading, error, refresh}: HomeEmptyProps) => {
     component = (
       <>
         <Text bold preset="paragraphMedium" marginBottom="s16">
-          Não foi possível carregar o feed 😥
+          {errorMessage}
         </Text>
         <Button title="Recarregar" preset="outline" onPress={refresh} />
       </>

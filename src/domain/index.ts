@@ -10,10 +10,10 @@ export {
 } from './Auth/useCases/useAuthValueIsAvailable';
 
 export {postService} from './Post/postService';
-export type {Post} from './Post/postTypes';
+export type {Post, PostAPI} from './Post/postTypes';
 export {usePostCreate} from './Post/useCases/usePostCreate';
-export {usePostList} from './Post/useCases/usePostList';
 
+export {usePostGetById} from './Post/useCases/usePostGetById';
 export {POST_COMMENT_PATH} from './PostComment/postCommentApi';
 export {postCommentService} from './PostComment/postCommentService';
 export type {PostComment, PostCommentAPI} from './PostComment/postCommentTypes';
@@ -27,3 +27,12 @@ export {userAdapter} from './User/userAdapter';
 export {USER_PATH} from './User/userApi';
 export {userService} from './User/userService';
 export type {User, UserAPI} from './User/userTypes';
+
+export {postReactionService} from './PostReaction/postReactionService';
+export type {
+  PostReaction,
+  PostReactionAPI,
+  PostReactionBase,
+  PostReactionType,
+} from './PostReaction/postReactionTypes';
+export {useReactToPost} from './PostReaction/useCases/useReactToPost';
