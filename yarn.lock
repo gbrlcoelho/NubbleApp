@@ -8799,10 +8799,10 @@ react-is@^17.0.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.2.tgz#e691d4a8e9c789365655539ab372762b0efb54f0"
   integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
 
-react-native-bootsplash@^5.5.0:
-  version "5.5.2"
-  resolved "https://registry.yarnpkg.com/react-native-bootsplash/-/react-native-bootsplash-5.5.2.tgz#918926402d74645c6a5e809b6b681e9cd580d773"
-  integrity sha512-syS0dOn6CbZuB+7LEHzYZ7xaa/GJ8gNXQxQw+XCPtZ1R9XBc3+BhfJH79jipH1+1hiRTbA9qAIGDBoWdBi6HAA==
+react-native-bootsplash@^5.5.3:
+  version "5.5.3"
+  resolved "https://registry.yarnpkg.com/react-native-bootsplash/-/react-native-bootsplash-5.5.3.tgz#341a2b3df7609ef7cb1a88063dcac17aab0a28f8"
+  integrity sha512-G/gbrX9qzjU6qEbcHGNwpiYxO7/QfWGU2gX7KMiRNxXQ11oFNYh9KZsDv+QTvkI2dP7/0f1x9uTNgVLzzx/Niw==
   dependencies:
     "@emotion/hash" "^0.9.1"
     "@expo/config-plugins" "^7.8.4"
