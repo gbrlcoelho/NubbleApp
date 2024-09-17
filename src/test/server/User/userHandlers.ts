@@ -1,12 +1,11 @@
-import {REACT_APP_BASE_URL} from '@env';
 import {HttpResponse, http} from 'msw';
 
-import {PageAPI} from '@api';
+import {BASE_URL, PageAPI} from '@api';
 import {USER_PATH, UserAPI} from '@domain';
 
 import {userMocked} from './userMocked';
 
-const FULL_URL = `${REACT_APP_BASE_URL}/${USER_PATH}`;
+const FULL_URL = `${BASE_URL}/${USER_PATH}`;
 
 export const userHandlers = [
   http.get(FULL_URL, async () => {

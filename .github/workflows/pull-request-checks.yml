@@ -21,9 +21,6 @@ jobs:
       - name: install dependencies
         run: yarn install
 
-      - name: set up environment
-        run: echo "REACT_APP_BASE_URL=${{ secrets.REACT_APP_BASE_URL }}" >> $GITHUB_ENV
-
       - name: run lint
         run: yarn lint
 

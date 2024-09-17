@@ -1,13 +1,12 @@
-import {REACT_APP_BASE_URL} from '@env';
 import {cloneDeep} from 'lodash';
 import {HttpResponse, http} from 'msw';
 
-import {PageAPI} from '@api';
+import {BASE_URL, PageAPI} from '@api';
 import {POST_COMMENT_PATH, PostCommentAPI} from '@domain';
 
 import {mockedData} from './mocks';
 
-const FULL_URL = `${REACT_APP_BASE_URL}/${POST_COMMENT_PATH}`;
+const FULL_URL = `${BASE_URL}/${POST_COMMENT_PATH}`;
 
 let inMemoryResponse = cloneDeep(mockedData.mockedPostCommentResponse);
 

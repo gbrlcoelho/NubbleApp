@@ -1,10 +1,10 @@
-import {REACT_APP_BASE_URL} from '@env';
 import axios from 'axios';
 
 import {AuthCredentials, authService} from '@domain';
 
+export const BASE_URL = 'http://localhost:3333';
 export const api = axios.create({
-  baseURL: REACT_APP_BASE_URL,
+  baseURL: BASE_URL,
 });
 
 type InterceptorProps = {
