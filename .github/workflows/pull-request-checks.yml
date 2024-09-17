@@ -16,7 +16,7 @@ jobs:
       - name: setup node
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '18'
 
       - name: install dependencies
         run: yarn install
@@ -28,4 +28,4 @@ jobs:
         run: yarn tsc --noEmit
 
       - name: run tests
-        run: yarn jest --clearCache && yarn test
+        run: yarn test
