@@ -1,4 +1,4 @@
-name: build-staging
+name: build-staging (Android)
 
 env:
   APK_PATH: android/app/build/outputs/apk/release/app-release.apk
@@ -7,7 +7,11 @@ on:
   workflow_dispatch:
 
 jobs:
+  run-checks:
+    uses: ./.github/workflows/pull-request-checks.yml
+
   build-android:
+    needs: run-checks
     runs-on: ubuntu-latest
     timeout-minutes: 30
     defaults:
@@ -24,7 +28,7 @@ jobs:
           node-version: '20'
 
       - name: setup java
-        uses: actions/setup-java@v2
+        uses: actions/setup-java@v4
         with:
           distribution: 'zulu'
           java-version: '17'
