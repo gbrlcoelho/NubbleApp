@@ -28,4 +28,4 @@ jobs:
         run: yarn tsc --noEmit
 
       - name: run tests
-        run: yarn test
+        run: yarn jest --clearCache && yarn test
