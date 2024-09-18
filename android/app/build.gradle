@@ -79,8 +79,8 @@ android {
         applicationId "br.com.gbrl.nubble"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        versionCode 4
+        versionName "4.0"
     }
     signingConfigs {
         debug {
