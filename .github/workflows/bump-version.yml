@@ -19,7 +19,7 @@ jobs:
           ref: ${{vars.RELEASE_BRANCH}}
 
       - name: make bump-version.sh executable
-        run: chmod +x ./scripts/bump-version.sh
+        run: chmod +x scripts/bump-version.sh
 
       - name: run bump-version.sh
         run: ./scripts/bump-version.sh $GITHUB_REF_NAME
