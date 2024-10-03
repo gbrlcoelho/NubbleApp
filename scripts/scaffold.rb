@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+
 def pascal_case?(str)
   str =~ /^[A-Z][a-zA-Z]*$/
 end
@@ -32,33 +34,33 @@ def create_component_files(name, folder)
   create_file("#{folder}/#{name}Props.ts", props_file_content)
 
   component_file_content = <<-HEREDOC
-    import React from 'react';
-    import {Box} from '@components';
-    import {#{name}Props} from './#{name}Props';
+import React from 'react';
+import {Box} from '@components';
+import {#{name}Props} from './#{name}Props';
 
-    export const #{name} = ({}: #{name}Props) => {
-      return (
-        <Box>
-          <></>
-        </Box>
-      );
-    };
+export const #{name} = ({}: #{name}Props) => {
+  return (
+    <Box>
+      <></>
+    </Box>
+  );
+};
   HEREDOC
   create_file("#{folder}/#{name}.tsx", component_file_content)
 end
 
 def create_test_files(name, folder)
   test_file_content = <<-HEREDOC
-    import React from 'react';
-    import {render} from '@testing-library/react-native';
-    import {#{name}} from '../#{name}';
+import React from 'react';
+import {render} from '@testing-library/react-native';
+import {#{name}} from '../#{name}';
 
-    describe('#{name}', () => {
-      it('should render correctly', () => {
-        const {toJSON} = render(<#{name} />);
-        expect(toJSON()).toMatchSnapshot();
-      });
-    });
+describe('#{name}', () => {
+  it('should render correctly', () => {
+    const {toJSON} = render(<#{name} />);
+    expect(toJSON()).toMatchSnapshot();
+  });
+});
   HEREDOC
   create_file("#{folder}/#{name}.spec.tsx", test_file_content)
 end
