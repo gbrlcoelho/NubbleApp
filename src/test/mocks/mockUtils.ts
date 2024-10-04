@@ -10,6 +10,10 @@ const userAPI: UserAPI = {
     'https://nubble-development.s3.sa-east-1.amazonaws.com/backend-integration/8-mateus.png',
   is_online: false,
   full_name: 'Gabriel Coelho',
+  meta: {
+    following_count: '10',
+    followers_count: '20',
+  },
 };
 
 export const userAuthCredentials: AuthCredentials = {

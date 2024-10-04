@@ -10,6 +10,10 @@ const toUser = (userApi: UserAPI): User => {
     profileUrl: userApi.profile_url,
     isOnline: userApi.is_online,
     fullName: userApi.full_name,
+    meta: {
+      followingCount: userApi.meta.following_count,
+      followersCount: userApi.meta.followers_count,
+    },
   };
 };
 

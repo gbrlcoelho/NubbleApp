@@ -28,11 +28,14 @@ const postCommentAPI: PostCommentAPI = {
     last_name: 'Tavares',
     username: 'celotavares',
     email: 'celotavares@coffstack.com',
-
     profile_url:
       'https://nubble-development.s3.sa-east-1.amazonaws.com/backend-integration/6-marcelo.png',
     is_online: false,
     full_name: 'Marcelo Tavares',
+    meta: {
+      following_count: '10',
+      followers_count: '20',
+    },
   },
 
   meta: {},
