@@ -55,7 +55,7 @@ export const ProfileTemplate = ({
   };
 
   return (
-    <Screen flex={1} canGoBack={!isMyProfile} style={$screen}>
+    <Screen flex={1} style={$screen}>
       <InfinityScrollList
         queryKey={[QueryKeys.PostList, userId]}
         renderItem={renderItem}
