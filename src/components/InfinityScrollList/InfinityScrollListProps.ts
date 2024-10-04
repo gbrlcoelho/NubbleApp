@@ -1,6 +1,6 @@
 import {FlatListProps} from 'react-native';
 
-import {QueryKeys, usePaginatedList} from '@infra';
+import {usePaginatedList} from '@infra';
 
 import {EmptyListProps} from './components/EmptyListProps';
 
@@ -10,6 +10,6 @@ export interface InfinityScrollListProps<ItemT extends ItemTConstraints> {
   renderItem: FlatListProps<ItemT>['renderItem'];
   flatListProps?: Partial<Omit<FlatListProps<ItemT>, 'renderItem'>>;
   emptyListProps?: Pick<EmptyListProps, 'emptyMessage' | 'errorMessage'>;
-  queryKey: QueryKeys;
+  queryKey: Parameters<typeof usePaginatedList<ItemT>>[0];
   getList: Parameters<typeof usePaginatedList<ItemT>>[1];
 }

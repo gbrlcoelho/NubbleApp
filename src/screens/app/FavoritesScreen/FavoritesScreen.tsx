@@ -45,7 +45,7 @@ export const FavoritesScreen = ({
   return (
     <Screen title="Favoritos">
       <InfinityScrollList
-        queryKey={QueryKeys.FavoriteList}
+        queryKey={[QueryKeys.FavoriteList]}
         flatListProps={{
           numColumns: NUM_COLUMNS,
           columnWrapperStyle: {columnGap: GAP},
