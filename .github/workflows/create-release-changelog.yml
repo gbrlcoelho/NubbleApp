@@ -13,35 +13,61 @@ jobs:
     if: ${{ github.event.pull_request.merged == true && startsWith(github.event.pull_request.head.ref, 'release/') }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Set up Node.js
+      - name: setup node
         uses: actions/setup-node@v4
         with:
           node-version: '20'
 
-      - name: Install conventional-changelog
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install Dependencies
         run: npm install -g conventional-changelog-cli
+
+      - name: Capture Tags with GitHub Script
+        id: capture-tags
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const currentTag = context.payload.pull_request.head.ref.replace('release/', '');
+
+            const tags = await github.paginate(github.rest.repos.listTags, {
+              owner: context.repo.owner,
+              repo: context.repo.repo
+            });
+
+            const previousTag = tags.length > 1 ? tags[1].name : null;
+
+            console.log(`Current Tag: ${currentTag}`);
+            console.log(`Previous Tag: ${previousTag}`);
+
+            core.setOutput('currentTag', currentTag);
+            core.setOutput('previousTag', previousTag);
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Generate Changelog
         run: |
-          TAG_NAME=$(echo "${{ github.event.pull_request.head.ref }}" | sed 's/release\///')
-          echo "TAG_NAME: $TAG_NAME"
-
-
-          PREVIOUS_TAG=$(git describe --tags `git rev-list --tags --max-count=1` || echo "none")
-          if [ "$PREVIOUS_TAG" == "none" ]; then
-            echo "No previous tag found, generating changelog from scratch"
-            conventional-changelog -p angular -r 0 -o CHANGELOG.md -s -k package.json --commit-path . --infile CHANGELOG.md
-          else
-            echo "Generating changelog from $PREVIOUS_TAG to $TAG_NAME"
-            conventional-changelog -p angular -r 0 -o CHANGELOG.md -s -k package.json --commit-path . --infile CHANGELOG.md --tag-prefix=v --from $PREVIOUS_TAG --to $TAG_NAME
-          fi
+          echo "Generating changelog from ${{ steps.capture-tags.outputs.previousTag }} to ${{ steps.capture-tags.outputs.currentTag }}"
+          conventional-changelog -p angular -r 0 -o CHANGELOG.md -s -k package.json --commit-path . --infile CHANGELOG.md --tag-prefix=v --from ${{ steps.capture-tags.outputs.previousTag }} --to ${{ steps.capture-tags.outputs.currentTag }}
 
       - name: Create GitHub Release
-        run: |
-          gh release create "v${TAG_NAME}" --title "Release v${TAG_NAME}" --notes-file CHANGELOG.md
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const currentTag = '${{ steps.capture-tags.outputs.currentTag }}';
+            const changelog = fs.readFileSync('CHANGELOG.md', 'utf8');
+
+            await github.rest.repos.createRelease({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              tag_name: currentTag,
+              name: currentTag,
+              body: changelog,
+              draft: false,
+              prerelease: false
+            });
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
