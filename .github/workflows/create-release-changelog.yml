@@ -53,4 +53,4 @@ jobs:
           name: ${{ env.current_tag }}
           body_path: CHANGELOG.md
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
