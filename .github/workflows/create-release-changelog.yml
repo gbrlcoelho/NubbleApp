@@ -28,22 +28,29 @@ jobs:
           previous_tag=$(git describe --tags `git rev-list --tags --skip=1 --max-count=1`)
           echo "Current Tag: $current_tag"
           echo "Previous Tag: $previous_tag"
-          echo "::set-output name=current_tag::$current_tag"
-          echo "::set-output name=previous_tag::$previous_tag"
+
+          echo "current_tag=$current_tag" >> $GITHUB_ENV
+          echo "previous_tag=$previous_tag" >> $GITHUB_ENV
+
+      - name: create empty changelog if not exists
+        run: |
+          if [ ! -f CHANGELOG.md ]; then
+            echo "# Changelog" > CHANGELOG.md
+          fi
 
       - name: generate changelog
         id: changelog
         run: |
           yarn global add conventional-changelog-cli
-          conventional-changelog -p angular -o CHANGELOG.md -s --commit-path .
+          conventional-changelog -p angular -i CHANGELOG.md -s --commit-path .
           cat CHANGELOG.md
 
       - name: create release
         id: create_release
         uses: softprops/action-gh-release@v1
         with:
-          tag_name: ${{ steps.tags.outputs.current_tag }}
-          name: ${{ steps.tags.outputs.current_tag }}
+          tag_name: ${{ env.current_tag }}
+          name: ${{ env.current_tag }}
           body_path: CHANGELOG.md
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
