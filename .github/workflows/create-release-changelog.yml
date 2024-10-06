@@ -1,73 +1,49 @@
 name: create-release-changelog
 
 on:
-  pull_request:
-    types:
-      - closed
-
-permissions:
-  contents: write
+  workflow_dispatch:
 
 jobs:
-  create-release:
-    if: ${{ github.event.pull_request.merged == true && startsWith(github.event.pull_request.head.ref, 'release/') }}
+  create-release-changelog:
+    name: create-release-changelog
     runs-on: ubuntu-latest
+
     steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
       - name: setup node
         uses: actions/setup-node@v4
         with:
           node-version: '20'
 
-      - name: Checkout Code
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+      - name: install dependencies
+        run: yarn install
 
-      - name: Install Dependencies
-        run: npm install -g conventional-changelog-cli
-
-      - name: Capture Tags with GitHub Script
-        id: capture-tags
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const currentTag = context.payload.pull_request.head.ref.replace('release/', '');
-
-            const tags = await github.paginate(github.rest.repos.listTags, {
-              owner: context.repo.owner,
-              repo: context.repo.repo
-            });
-
-            const previousTag = tags.length > 1 ? tags[1].name : null;
-
-            console.log(`Current Tag: ${currentTag}`);
-            console.log(`Previous Tag: ${previousTag}`);
-
-            core.setOutput('currentTag', currentTag);
-            core.setOutput('previousTag', previousTag);
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Generate Changelog
+      - name: get current and previous tag
+        id: tags
         run: |
-          echo "Generating changelog from ${{ steps.capture-tags.outputs.previousTag }} to ${{ steps.capture-tags.outputs.currentTag }}"
-          conventional-changelog -p angular -r 0 -o CHANGELOG.md -s -k package.json --commit-path . --infile CHANGELOG.md --tag-prefix=v --from ${{ steps.capture-tags.outputs.previousTag }} --to ${{ steps.capture-tags.outputs.currentTag }}
+          current_tag=$(git describe --tags `git rev-list --tags --max-count=1`)
+          previous_tag=$(git describe --tags `git rev-list --tags --skip=1 --max-count=1`)
+          echo "Current Tag: $current_tag"
+          echo "Previous Tag: $previous_tag"
+          echo "::set-output name=current_tag::$current_tag"
+          echo "::set-output name=previous_tag::$previous_tag"
 
-      - name: Create GitHub Release
-        uses: actions/github-script@v7
+      - name: generate changelog
+        id: changelog
+        run: |
+          yarn global add conventional-changelog-cli
+          conventional-changelog -p angular -o CHANGELOG.md -s --commit-path .
+          cat CHANGELOG.md
+
+      - name: create release
+        id: create_release
+        uses: softprops/action-gh-release@v1
         with:
-          script: |
-            const currentTag = '${{ steps.capture-tags.outputs.currentTag }}';
-            const changelog = fs.readFileSync('CHANGELOG.md', 'utf8');
-
-            await github.rest.repos.createRelease({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              tag_name: currentTag,
-              name: currentTag,
-              body: changelog,
-              draft: false,
-              prerelease: false
-            });
+          tag_name: ${{ steps.tags.outputs.current_tag }}
+          name: ${{ steps.tags.outputs.current_tag }}
+          body_path: CHANGELOG.md
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
