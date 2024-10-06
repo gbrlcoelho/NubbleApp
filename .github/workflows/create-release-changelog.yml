@@ -1,0 +1,39 @@
+name: create-release
+
+on:
+  pull_request:
+    types:
+      - closed
+
+permissions:
+  contents: write
+
+jobs:
+  create-release:
+    if: ${{ github.event.pull_request.merged == true }} && startsWith(github.event.pull_request.head.ref, 'release/')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install conventional-changelog
+        run: npm install -g conventional-changelog-cli
+
+      - name: Generate Changelog
+        run: |
+          # Obtem a tag atual a partir do nome da branch (por exemplo, 'release/8.0.0')
+          TAG_NAME=$(echo "${{ github.event.pull_request.head.ref }}" | sed 's/release\///')
+          PREVIOUS_TAG=$(git describe --tags `git rev-list --tags --max-count=1`)
+          echo "Generating changelog from $PREVIOUS_TAG to $TAG_NAME"
+          conventional-changelog -p angular -r 0 -o CHANGELOG.md -s -k package.json --commit-path . --infile CHANGELOG.md --tag-prefix=v --from $PREVIOUS_TAG --to $TAG_NAME
+
+      - name: Create GitHub Release
+        run: |
+          # Cria a release no GitHub usando a tag atual e o changelog gerado
+          gh release create "v${{ github.event.pull_request.head.ref }}" --title "Release v${{ github.event.pull_request.head.ref }}" --notes-file CHANGELOG.md
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
