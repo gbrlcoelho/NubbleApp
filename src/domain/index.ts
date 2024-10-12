@@ -20,6 +20,7 @@ export {usePostCommentRemove} from './PostComment/useCases/usePostCommentRemove'
 
 export {useUserGetById} from './User/useCases/useUserGetById';
 export {useUserSearch} from './User/useCases/useUserSearch';
+export {useUserUpdate} from './User/useCases/useUserUpdate';
 export {userAdapter} from './User/userAdapter';
 export {USER_PATH} from './User/userApi';
 export {userService} from './User/userService';
