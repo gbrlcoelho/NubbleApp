@@ -1,7 +1,7 @@
-import {User} from '@domain';
+import {UserDetails} from '@domain';
 
 export interface ProfileHeaderProps {
-  user: User;
+  userDetails: UserDetails;
   isMyProfile?: boolean;
   publicationsCount: string;
 }

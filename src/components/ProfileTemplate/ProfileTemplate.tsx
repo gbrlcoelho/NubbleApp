@@ -55,7 +55,7 @@ export const ProfileTemplate = ({
 
     return (
       <ProfileHeader
-        user={user}
+        userDetails={user}
         isMyProfile={isMyProfile}
         publicationsCount={publicationsCount.toString()}
       />

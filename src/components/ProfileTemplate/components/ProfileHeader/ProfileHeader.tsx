@@ -10,7 +10,7 @@ import {ProfileMetadata} from '../ProfileMetadata/ProfileMetadata';
 import {ProfileHeaderProps} from './ProfileHeaderProps';
 
 export const ProfileHeader = ({
-  user,
+  userDetails,
   isMyProfile,
   publicationsCount,
 }: ProfileHeaderProps) => {
@@ -20,19 +20,19 @@ export const ProfileHeader = ({
     <Box paddingHorizontal="s24">
       <Box alignItems="center">
         <ProfileAvatar
-          imageURL={user?.profileUrl}
+          imageURL={userDetails?.profileUrl}
           size={100}
           borderRadius={40}
         />
         <Text preset="headingMedium" marginTop="s16">
-          {user.fullName}
+          {userDetails.fullName}
         </Text>
         <Text preset="paragraphLarge" mt="s4" color="gray1">
-          @{user.username}
+          @{userDetails.username}
         </Text>
         <ProfileMetadata
-          followersCount={user.meta.followersCount}
-          followingCount={user.meta.followingCount}
+          followersCount={userDetails.meta.followersCount}
+          followingCount={userDetails.meta.followingCount}
           publicationsCount={publicationsCount}
         />
         {isMyProfile ? (
@@ -50,7 +50,10 @@ export const ProfileHeader = ({
         )}
       </Box>
 
-      <ProfileButton isMyProfile={isMyProfile} isFollowing={false} />
+      <ProfileButton
+        isMyProfile={isMyProfile}
+        isFollowing={userDetails.isFollowing}
+      />
     </Box>
   );
 };
