@@ -6,12 +6,16 @@ import {useForm} from 'react-hook-form';
 import {Button, FormPasswordInput, Screen} from '@components';
 import {useAuthUpdatePassword} from '@domain';
 import {AppScreenProps} from '@routes';
+import {useToastService} from '@services';
 
 import {EditPasswordSchema, editPasswordSchema} from './editPasswordSchema';
 
 export const EditPasswordScreen =
   ({}: AppScreenProps<'EditPasswordScreen'>) => {
-    const {isLoading, updatePassword} = useAuthUpdatePassword();
+    const {showToast} = useToastService();
+    const {isLoading, updatePassword} = useAuthUpdatePassword({
+      onError: message => showToast({type: 'error', message}),
+    });
 
     const {control, formState, handleSubmit} = useForm<EditPasswordSchema>({
       resolver: zodResolver(editPasswordSchema),
