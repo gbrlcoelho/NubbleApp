@@ -5,7 +5,10 @@ import {Box, ProfileAvatar, Text} from '@components';
 
 import {EditProfileHeaderProps} from './EditProfileHeaderProps';
 
-export const EditProfileHeader = ({user}: EditProfileHeaderProps) => {
+export const EditProfileHeader = ({
+  user,
+  ...boxProps
+}: EditProfileHeaderProps) => {
   if (!user) {
     return null;
   }
@@ -16,7 +19,7 @@ export const EditProfileHeader = ({user}: EditProfileHeaderProps) => {
   };
 
   return (
-    <Box flexDirection="row" alignItems="center">
+    <Box flexDirection="row" alignItems="center" {...boxProps}>
       <ProfileAvatar imageURL={user.profileUrl} size={64} borderRadius={24} />
 
       <Pressable hitSlop={10} onPress={navigateToPhoto}>
