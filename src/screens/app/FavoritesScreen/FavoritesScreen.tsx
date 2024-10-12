@@ -5,8 +5,8 @@ import {PostReaction} from 'src/domain/PostReaction/postReactionTypes';
 
 import {InfinityScrollList, PressableBox, Screen, Text} from '@components';
 import {postReactionService} from '@domain';
+import {useAppNavigation} from '@hooks';
 import {QueryKeys} from '@infra';
-import {AppTabScreenProps} from '@routes';
 
 const NUM_COLUMNS = 2;
 const SCREEN_WIDTH = Dimensions.get('window').width;
@@ -15,18 +15,17 @@ const GAP = 16;
 
 const ITEM_WIDTH = (SCREEN_WIDTH - GAP - SCREEN_PADDING * 2) / NUM_COLUMNS;
 
-export const FavoritesScreen = ({
-  navigation,
-}: AppTabScreenProps<'FavoritesScreen'>) => {
+export const FavoritesScreen = () => {
+  const {navigate} = useAppNavigation();
+
   const renderItem: ListRenderItem<PostReaction> = useCallback(
     ({item}) => {
       return (
         <PressableBox
           onPress={() =>
-            navigation.navigate('PostCommentScreen', {
+            navigate.toPostDetails({
               postId: item.postId,
               postAuthorId: item.author.id,
-              showPost: true,
             })
           }>
           <Image
@@ -39,7 +38,7 @@ export const FavoritesScreen = ({
         </PressableBox>
       );
     },
-    [navigation],
+    [navigate],
   );
 
   return (

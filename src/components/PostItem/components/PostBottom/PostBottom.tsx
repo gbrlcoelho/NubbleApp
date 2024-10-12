@@ -1,8 +1,7 @@
 import React from 'react';
 
-import {useNavigation} from '@react-navigation/native';
-
 import {Box, Text} from '@components';
+import {useAppNavigation} from '@hooks';
 
 import {PostBottomProps} from './PostBottomProps';
 
@@ -13,11 +12,11 @@ export const PostBottom = ({
   id,
   hideCommentAction,
 }: PostBottomProps) => {
-  const {navigate} = useNavigation();
+  const {navigate} = useAppNavigation();
   const commentText = hideCommentAction ? null : getCommentText(commentCount);
 
   const navigateToPostCommentScreen = () => {
-    navigate('PostCommentScreen', {postId: id, postAuthorId: author.id});
+    navigate.toPostComment({postId: id, postAuthorId: author.id});
   };
 
   return (

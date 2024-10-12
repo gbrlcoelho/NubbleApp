@@ -3,12 +3,14 @@ import {
   Dimensions,
   Image,
   ListRenderItem,
+  Pressable,
   StyleProp,
   ViewStyle,
 } from 'react-native';
 
 import {InfinityScrollList, Screen} from '@components';
 import {Post, postService, useUserGetById} from '@domain';
+import {useAppNavigation} from '@hooks';
 import {QueryKeys} from '@infra';
 
 import {ProfileHeader} from './components/ProfileHeader/ProfileHeader';
@@ -22,17 +24,29 @@ export const ProfileTemplate = ({
   userId,
   isMyProfile,
 }: ProfileTemplateProps) => {
+  const {navigate} = useAppNavigation();
   const {user} = useUserGetById(userId);
   const [publicationsCount, setPublicationsCount] = useState(0);
 
-  const renderItem: ListRenderItem<Post> = useCallback(({item}) => {
-    return (
-      <Image
-        source={{uri: item.imageURL}}
-        style={{width: ITEM_WIDTH, height: ITEM_WIDTH}}
-      />
-    );
-  }, []);
+  const renderItem: ListRenderItem<Post> = useCallback(
+    ({item}) => {
+      return (
+        <Pressable
+          onPress={() =>
+            navigate.toPostDetails({
+              postId: item.id,
+              postAuthorId: item.author.id,
+            })
+          }>
+          <Image
+            source={{uri: item.imageURL}}
+            style={{width: ITEM_WIDTH, height: ITEM_WIDTH}}
+          />
+        </Pressable>
+      );
+    },
+    [navigate],
+  );
 
   const renderListHeader = () => {
     if (!user) {

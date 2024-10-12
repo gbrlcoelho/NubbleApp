@@ -1,9 +1,8 @@
 import React from 'react';
 import {GestureResponderEvent} from 'react-native';
 
-import {useNavigation} from '@react-navigation/native';
-
 import {Box, PressableBox, ProfileAvatar, Text} from '@components';
+import {useAppNavigation} from '@hooks';
 
 import {ProfileUserProps} from './ProfileUserProps';
 
@@ -14,13 +13,13 @@ export const ProfileUser = ({
   RightComponent,
   ...pressableBoxProps
 }: ProfileUserProps) => {
-  const {navigate} = useNavigation();
+  const {navigate} = useAppNavigation();
 
   const handleOnPress = (event: GestureResponderEvent) => {
     if (onPress) {
       onPress(event);
     }
-    navigate('ProfileScreen', {userId: user.id});
+    navigate.toProfile(user.id);
   };
 
   return (
@@ -32,7 +31,11 @@ export const ProfileUser = ({
       onPress={handleOnPress}
       {...pressableBoxProps}>
       <Box flexDirection="row" alignItems="center">
-        <ProfileAvatar {...avatarProps} imageURL={user.profileUrl} />
+        <ProfileAvatar
+          {...avatarProps}
+          imageURL={user.profileUrl}
+          authorId={user.id}
+        />
         <Text marginLeft="s12" preset="paragraphMedium" semiBold>
           {user.username}
         </Text>
