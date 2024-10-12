@@ -29,6 +29,7 @@ const buttonVariants: Record<
 export const ProfileButton = ({
   isFollowing,
   isMyProfile,
+  userId,
 }: ProfileButtonProps) => {
   const {navigate} = useNavigation();
   const variant = getVariant({isFollowing, isMyProfile});
@@ -36,7 +37,7 @@ export const ProfileButton = ({
 
   const handleOnPress = () => {
     if (isMyProfile) {
-      navigate('EditProfileScreen');
+      navigate('EditProfileScreen', {userId});
     }
   };
 

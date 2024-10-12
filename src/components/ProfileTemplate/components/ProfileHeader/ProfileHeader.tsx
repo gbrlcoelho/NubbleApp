@@ -51,6 +51,7 @@ export const ProfileHeader = ({
       </Box>
 
       <ProfileButton
+        userId={userDetails.id}
         isMyProfile={isMyProfile}
         isFollowing={userDetails.isFollowing}
       />
