@@ -44,7 +44,7 @@ export const ProfileHeader = ({
             />
           </Box>
         ) : (
-          <Box position="absolute" alignSelf="flex-start" left={-24}>
+          <Box position="absolute" alignSelf="flex-start">
             <BackButton />
           </Box>
         )}
