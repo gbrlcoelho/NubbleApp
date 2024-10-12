@@ -1,10 +1,10 @@
 import React from 'react';
 
-import {Screen} from '@components';
+import {Button, Screen} from '@components';
 import {useUserGetById} from '@domain';
 import {AppScreenProps} from '@routes';
 
-import {EditProfileHeader} from './components';
+import {EditProfileForm, EditProfileHeader} from './components';
 
 export const EditProfileScreen = ({
   route,
@@ -12,9 +12,16 @@ export const EditProfileScreen = ({
   const userId = route.params.userId;
   const {user} = useUserGetById(userId);
 
+  const submitForm = () => {
+    // TODO: implement submit form
+  };
+
   return (
     <Screen canGoBack scrollable title="Editar Perfil">
       <EditProfileHeader user={user} />
+      {user && <EditProfileForm user={user} />}
+
+      <Button mt="s40" title="Salvar Alterações" onPress={submitForm} />
     </Screen>
   );
 };
