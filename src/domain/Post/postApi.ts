@@ -3,7 +3,7 @@ import {ImageForUpload} from '@services';
 
 import {PostAPI} from './postTypes';
 
-const POST_PATH = 'user/post';
+export const POST_PATH = 'user/post';
 
 const getList = async (
   params?: PageParams & {user_id?: number},

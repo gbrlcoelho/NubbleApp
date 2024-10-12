@@ -9,6 +9,7 @@ export {
   useAuthUsernameAvailable,
 } from './Auth/useCases/useAuthValueIsAvailable';
 
+export {POST_PATH} from './Post/postApi';
 export {postService} from './Post/postService';
 export type {Post, PostAPI} from './Post/postTypes';
 export {usePostCreate} from './Post/useCases/usePostCreate';
