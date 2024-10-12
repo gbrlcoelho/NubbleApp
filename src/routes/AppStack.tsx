@@ -26,9 +26,9 @@ export type AppStackParamList = {
   ProfileScreen: {userId: number};
   PublishPostScreen: {imageUri: string};
   CameraScreen: undefined;
-  EditProfileScreen: undefined;
-  EditEmailScreen: undefined;
-  EditPasswordScreen: undefined;
+  EditProfileScreen: {userId: number};
+  EditEmailScreen: {userId: number};
+  EditPasswordScreen: {userId: number};
 };
 
 const Stack = createNativeStackNavigator<AppStackParamList>();
