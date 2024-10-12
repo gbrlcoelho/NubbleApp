@@ -4,6 +4,7 @@ export {useAuthRequestNewPassword} from './Auth/useCases/useAuthRequestNewPasswo
 export {useAuthSignIn} from './Auth/useCases/useAuthSignIn';
 export {useAuthSignOut} from './Auth/useCases/useAuthSignOut';
 export {useAuthSignUp} from './Auth/useCases/useAuthSignUp';
+export {useAuthUpdatePassword} from './Auth/useCases/useAuthUpdatePassword';
 
 export {POST_PATH} from './Post/postApi';
 export {postService} from './Post/postService';
