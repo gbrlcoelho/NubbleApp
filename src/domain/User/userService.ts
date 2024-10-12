@@ -5,7 +5,8 @@ import {userApi} from './userApi';
 
 const getById = async (id: number) => {
   const userAPI = await userApi.getById(id.toString());
-  return userAdapter.toUser(userAPI);
+  const {isFollowing} = await userApi.isFollowing(id.toString());
+  return userAdapter.toUserDetails(userAPI, isFollowing);
 };
 
 const searchUser = async (search: string) => {

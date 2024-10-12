@@ -1,4 +1,4 @@
-import {User, UserAPI} from './userTypes';
+import {User, UserAPI, UserDetails} from './userTypes';
 
 const toUser = (userApi: UserAPI): User => {
   return {
@@ -17,6 +17,14 @@ const toUser = (userApi: UserAPI): User => {
   };
 };
 
+const toUserDetails = (userApi: UserAPI, isFollowing: boolean): UserDetails => {
+  return {
+    ...toUser(userApi),
+    isFollowing,
+  };
+};
+
 export const userAdapter = {
   toUser,
+  toUserDetails,
 };

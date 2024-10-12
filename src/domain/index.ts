@@ -26,7 +26,7 @@ export {useUserSearch} from './User/useCases/useUserSearch';
 export {userAdapter} from './User/userAdapter';
 export {USER_PATH} from './User/userApi';
 export {userService} from './User/userService';
-export type {User, UserAPI} from './User/userTypes';
+export type {User, UserAPI, UserDetails} from './User/userTypes';
 
 export {postReactionService} from './PostReaction/postReactionService';
 export type {
