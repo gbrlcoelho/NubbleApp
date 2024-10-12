@@ -18,6 +18,7 @@
       "@services": ["src/services/index.ts"],
       "@test": ["src/test/index.ts"],
       "@assets": ["src/assets/index.ts"],
+      "@form": ["src/form/index.ts"],
       "test-utils": ["src/test/test-utils.tsx"]
     }
   }

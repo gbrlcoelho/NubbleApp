@@ -1,0 +1,1 @@
+export {schemaTypes} from './schemaTypes';
