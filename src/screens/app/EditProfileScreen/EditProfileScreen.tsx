@@ -1,6 +1,6 @@
 import React, {useRef, useState} from 'react';
 
-import {Button, Screen} from '@components';
+import {Button, InputButton, Screen} from '@components';
 import {useUserGetById} from '@domain';
 import {AppScreenProps} from '@routes';
 
@@ -9,6 +9,7 @@ import {EditProfileFormRef} from './components/EditProfileForm/EditProfileFormPr
 
 export const EditProfileScreen = ({
   route,
+  navigation,
 }: AppScreenProps<'EditProfileScreen'>) => {
   const userId = route.params.userId;
   const {user} = useUserGetById(userId);
@@ -30,6 +31,30 @@ export const EditProfileScreen = ({
           onChangeIsValid={setFormIsValid}
           ref={formRef}
         />
+      )}
+
+      {user && (
+        <>
+          <InputButton
+            label="E-mail"
+            value={user?.email}
+            mb="s16"
+            onPress={() =>
+              navigation.navigate('EditEmailScreen', {
+                userId: route.params.userId,
+              })
+            }
+          />
+          <InputButton
+            label="Senha"
+            value="•••••••"
+            onPress={() =>
+              navigation.navigate('EditPasswordScreen', {
+                userId: route.params.userId,
+              })
+            }
+          />
+        </>
       )}
 
       <Button

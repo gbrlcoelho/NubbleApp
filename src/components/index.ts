@@ -13,6 +13,7 @@ export {FormTextInput} from './Form/FormTextInput';
 export {Icon} from './Icon/Icon';
 export type {IconBase, IconName, IconProps} from './Icon/IconProps';
 export {InfinityScrollList} from './InfinityScrollList/InfinityScrollList';
+export {InputButton} from './InputButton/InputButton';
 export {PasswordInput} from './PasswordInput/PasswordInput';
 export type {PasswordInputProps} from './PasswordInput/PasswordInputProps';
 export {PermissionManager} from './PermissionManager/PermissionManager';
