@@ -17,59 +17,71 @@ export const Toast = () => {
   const [currentToast, setCurrentToast] = useState<
     ToastService['toast'] | null
   >(null);
+
   const toast = useToast();
   const {hideToast} = useToastService();
-  const position: ToastPosition = currentToast?.position || 'top';
 
   const fadeAnim = useRef(new Animated.Value(0)).current;
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  const runEnteringAnimation = useCallback(() => {
-    Animated.timing(fadeAnim, {
-      toValue: 1,
-      duration: 1000,
-      useNativeDriver: true,
-    }).start();
-  }, [fadeAnim]);
+  const position: ToastPosition = currentToast?.position || 'top';
 
-  const runExitingAnimation = useCallback(
-    (callback: Animated.EndCallback) => {
+  const enqueueToast = useCallback(
+    (newToast: ToastService['toast']) => {
+      setToastQueue(prevQueue => [...prevQueue, newToast]);
+    },
+    [setToastQueue],
+  );
+
+  const dequeueToast = useCallback(() => {
+    setToastQueue(prevQueue => prevQueue.slice(1));
+  }, [setToastQueue]);
+
+  const runAnimation = useCallback(
+    (toValue: number, duration: number, callback?: Animated.EndCallback) => {
       Animated.timing(fadeAnim, {
-        toValue: 0,
-        duration: 1000,
+        toValue,
+        duration,
         useNativeDriver: true,
       }).start(callback);
     },
     [fadeAnim],
   );
 
-  useEffect(() => {
-    if (toast) {
-      setToastQueue(prevQueue => [...prevQueue, toast]);
-    }
-  }, [toast]);
-
-  useEffect(() => {
+  const showNextToast = useCallback(() => {
     if (toastQueue.length > 0 && !currentToast) {
       const nextToast = toastQueue[0];
       setCurrentToast(nextToast);
-      setToastQueue(prevQueue => prevQueue.slice(1));
+      dequeueToast();
 
-      runEnteringAnimation();
+      runAnimation(1, 300);
 
-      setTimeout(() => {
-        runExitingAnimation(() => {
+      timeoutRef.current = setTimeout(() => {
+        runAnimation(0, 300, () => {
           hideToast();
           setCurrentToast(null);
         });
       }, nextToast?.duration || DEFAULT_DURATION);
     }
-  }, [
-    toastQueue,
-    currentToast,
-    runEnteringAnimation,
-    runExitingAnimation,
-    hideToast,
-  ]);
+  }, [toastQueue, currentToast, dequeueToast, runAnimation, hideToast]);
+
+  useEffect(() => {
+    if (toast) {
+      enqueueToast(toast);
+    }
+  }, [toast, enqueueToast]);
+
+  useEffect(() => {
+    showNextToast();
+  }, [toastQueue, currentToast, showNextToast]);
+
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, []);
 
   if (!currentToast) {
     return null;

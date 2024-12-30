@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useCallback, useState} from 'react';
 import {Dimensions} from 'react-native';
 
 import {Box, BoxProps, Icon, IconProps, Text} from '@components';
@@ -16,13 +16,15 @@ export const ToastContent = ({
   const [actionCalled, setActionCalled] = useState(false);
   const type: ToastType = currentToast?.type || 'success';
 
-  const handleActionPress = () => {
-    if (!actionCalled) {
-      setActionCalled(true);
-      currentToast?.action?.onPress();
-      hideToast();
+  const handleActionPress = useCallback(() => {
+    if (actionCalled) {
+      return;
     }
-  };
+
+    setActionCalled(true);
+    currentToast?.action?.onPress();
+    hideToast();
+  }, [actionCalled, currentToast, hideToast]);
 
   return (
     <Box {...$boxStyle} style={$shadowProps}>
@@ -36,13 +38,12 @@ export const ToastContent = ({
       </Text>
       {currentToast?.action && (
         <Text
-          disabled={actionCalled}
           marginLeft="s8"
           preset="paragraphMedium"
           color="marked"
           bold
           onPress={handleActionPress}>
-          {currentToast.action.title}
+          {!actionCalled && currentToast.action.title}
         </Text>
       )}
     </Box>
