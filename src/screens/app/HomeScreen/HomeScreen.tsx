@@ -17,7 +17,7 @@ export const HomeScreen = ({}: AppTabScreenProps<'HomeScreen'>) => {
     <Screen style={$screen}>
       <InfinityScrollList
         renderItem={renderItem}
-        queryKey={QueryKeys.PostList}
+        queryKey={[QueryKeys.PostList]}
         getList={postService.getList}
         flatListProps={{ListHeaderComponent: <HomeHeader />}}
       />

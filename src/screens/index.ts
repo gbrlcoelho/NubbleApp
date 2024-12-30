@@ -5,6 +5,9 @@ export {SuccessScreen} from './auth/SuccessScreen/SuccessScreen';
 
 export {CameraScreen} from './app/CameraScreen/CameraScreen';
 export {DarkModeScreen} from './app/DarkModeScreen/DarkModeScreen';
+export {EditEmailScreen} from './app/EditEmailScreen/EditEmailScreen';
+export {EditPasswordScreen} from './app/EditPasswordScreen/EditPasswordScreen';
+export {EditProfileScreen} from './app/EditProfileScreen/EditProfileScreen';
 export {FavoritesScreen} from './app/FavoritesScreen/FavoritesScreen';
 export {HomeScreen} from './app/HomeScreen/HomeScreen';
 export {MyProfileScreen} from './app/MyProfileScreen/MyProfileScreen';

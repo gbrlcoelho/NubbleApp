@@ -51,7 +51,10 @@ export const PostCommentItem = ({
         flexDirection="row"
         alignItems="center"
         marginBottom="s16">
-        <ProfileAvatar imageURL={postComment.author.profileUrl} />
+        <ProfileAvatar
+          imageURL={postComment.author.profileUrl}
+          authorId={postComment.author.id}
+        />
         <Box marginLeft="s12" flex={1}>
           <Text preset="paragraphSmall" bold>
             {postComment.author.username}

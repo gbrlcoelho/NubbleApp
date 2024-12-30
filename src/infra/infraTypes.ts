@@ -8,4 +8,5 @@ export enum QueryKeys {
   IsUsernameAvailable = 'IsUsernameAvailable',
   IsEmailAvailable = 'isEmailAvailable',
   CameralRollList = 'CameralRollList',
+  AsyncValidation = 'AsyncValidation',
 }

@@ -7,6 +7,9 @@ import {AppTabBottomTabParamList, AppTabNavigator} from '@routes';
 import {
   CameraScreen,
   DarkModeScreen,
+  EditEmailScreen,
+  EditPasswordScreen,
+  EditProfileScreen,
   PostCommentScreen,
   ProfileScreen,
   PublishPostScreen,
@@ -23,6 +26,9 @@ export type AppStackParamList = {
   ProfileScreen: {userId: number};
   PublishPostScreen: {imageUri: string};
   CameraScreen: undefined;
+  EditProfileScreen: {userId: number};
+  EditEmailScreen: {userId: number};
+  EditPasswordScreen: {userId: number};
 };
 
 const Stack = createNativeStackNavigator<AppStackParamList>();
@@ -49,6 +55,9 @@ export const AppStack = ({
       <Stack.Screen name="SearchScreen" component={SearchScreen} />
       <Stack.Screen name="PublishPostScreen" component={PublishPostScreen} />
       <Stack.Screen name="CameraScreen" component={CameraScreen} />
+      <Stack.Screen name="EditProfileScreen" component={EditProfileScreen} />
+      <Stack.Screen name="EditEmailScreen" component={EditEmailScreen} />
+      <Stack.Screen name="EditPasswordScreen" component={EditPasswordScreen} />
     </Stack.Navigator>
   );
 };

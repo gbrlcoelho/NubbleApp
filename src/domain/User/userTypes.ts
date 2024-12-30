@@ -7,6 +7,14 @@ export interface User {
   profileUrl: string;
   isOnline: boolean;
   fullName: string;
+  meta: {
+    followingCount: string;
+    followersCount: string;
+  };
+}
+
+export interface UserDetails extends User {
+  isFollowing: boolean;
 }
 
 export interface UserAPI {
@@ -18,4 +26,12 @@ export interface UserAPI {
   profile_url: string;
   is_online: boolean;
   full_name: string;
+  meta: {
+    following_count: string;
+    followers_count: string;
+  };
 }
+
+export type UpdateUserParams = Partial<
+  Pick<User, 'firstName' | 'lastName' | 'username'>
+>;

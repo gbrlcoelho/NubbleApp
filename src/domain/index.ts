@@ -4,11 +4,9 @@ export {useAuthRequestNewPassword} from './Auth/useCases/useAuthRequestNewPasswo
 export {useAuthSignIn} from './Auth/useCases/useAuthSignIn';
 export {useAuthSignOut} from './Auth/useCases/useAuthSignOut';
 export {useAuthSignUp} from './Auth/useCases/useAuthSignUp';
-export {
-  useAuthEmailAvailable,
-  useAuthUsernameAvailable,
-} from './Auth/useCases/useAuthValueIsAvailable';
+export {useAuthUpdatePassword} from './Auth/useCases/useAuthUpdatePassword';
 
+export {POST_PATH} from './Post/postApi';
 export {postService} from './Post/postService';
 export type {Post, PostAPI} from './Post/postTypes';
 export {usePostCreate} from './Post/useCases/usePostCreate';
@@ -23,10 +21,11 @@ export {usePostCommentRemove} from './PostComment/useCases/usePostCommentRemove'
 
 export {useUserGetById} from './User/useCases/useUserGetById';
 export {useUserSearch} from './User/useCases/useUserSearch';
+export {useUserUpdate} from './User/useCases/useUserUpdate';
 export {userAdapter} from './User/userAdapter';
 export {USER_PATH} from './User/userApi';
 export {userService} from './User/userService';
-export type {User, UserAPI} from './User/userTypes';
+export type {User, UserAPI, UserDetails} from './User/userTypes';
 
 export {postReactionService} from './PostReaction/postReactionService';
 export type {

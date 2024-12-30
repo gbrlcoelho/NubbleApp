@@ -4,4 +4,5 @@ export interface ProfileAvatarProps {
   size?: number;
   /** @default 14 */
   borderRadius?: number;
+  authorId?: number;
 }

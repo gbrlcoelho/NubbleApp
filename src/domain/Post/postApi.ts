@@ -3,9 +3,11 @@ import {ImageForUpload} from '@services';
 
 import {PostAPI} from './postTypes';
 
-const POST_PATH = 'user/post';
+export const POST_PATH = 'user/post';
 
-const getList = async (params?: PageParams): Promise<PageAPI<PostAPI>> => {
+const getList = async (
+  params?: PageParams & {user_id?: number},
+): Promise<PageAPI<PostAPI>> => {
   const response = await api.get<PageAPI<PostAPI>>(POST_PATH, {params});
   return response.data;
 };

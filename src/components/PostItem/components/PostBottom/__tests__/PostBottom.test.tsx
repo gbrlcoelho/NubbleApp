@@ -7,7 +7,7 @@ import {PostBottom} from '../PostBottom';
 
 import {mockedPost} from './mockedData/mockedPost';
 
-const mockedNavigate = jest.fn();
+const mockedPush = jest.fn();
 
 jest.mock('@react-navigation/native', () => {
   const originalModule = jest.requireActual(
@@ -16,7 +16,7 @@ jest.mock('@react-navigation/native', () => {
   return {
     ...originalModule,
     useNavigation: () => ({
-      navigate: mockedNavigate,
+      push: mockedPush,
     }),
   };
 });
@@ -39,7 +39,7 @@ describe('<PostBottom />', () => {
 
     fireEvent.press(screen.getByText(/comentário/));
 
-    expect(mockedNavigate).toHaveBeenCalledWith('PostCommentScreen', {
+    expect(mockedPush).toHaveBeenCalledWith('PostCommentScreen', {
       postId: mockedPost.id,
       postAuthorId: mockedPost.author.id,
     });
