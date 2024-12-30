@@ -33,3 +33,4 @@ export type {TextInputProps} from './TextInput/TextInputProps';
 export {$textInputStyle} from './TextInput/TextInputStyles';
 export {TextMessage} from './TextMessage/TextMessage';
 export {Toast} from './Toast/Toast';
+export {UserListTemplate} from './UserListTemplate/UserListTemplate';
