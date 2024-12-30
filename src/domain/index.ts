@@ -35,3 +35,6 @@ export type {
   PostReactionType,
 } from './PostReaction/postReactionTypes';
 export {useReactToPost} from './PostReaction/useCases/useReactToPost';
+
+export {followApi} from './Follow/followApi';
+export {followService} from './Follow/followService';

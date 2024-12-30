@@ -1,4 +1,5 @@
 import {apiAdapter} from '@api';
+import {followApi} from '@domain';
 
 import {userAdapter} from './userAdapter';
 import {userApi} from './userApi';
@@ -6,7 +7,7 @@ import {UpdateUserParams, User} from './userTypes';
 
 const getById = async (id: number) => {
   const userAPI = await userApi.getById(id.toString());
-  const {isFollowing} = await userApi.isFollowing(id.toString());
+  const {isFollowing} = await followApi.isFollowing(id.toString());
   return userAdapter.toUserDetails(userAPI, isFollowing);
 };
 
