@@ -1,12 +1,21 @@
 import React from 'react';
 
-import {Screen, Text} from '@components';
-import {AppScreenProps} from '@routes';
+import {UserListTemplate} from '@components';
+import {followService} from '@domain';
+import {QueryKeys} from '@infra';
 
-export const MyFollowersScreen = ({}: AppScreenProps<'MyFollowersScreen'>) => {
+export const MyFollowersScreen = () => {
   return (
-    <Screen flex={1} title="Seguidores">
-      <Text>MyFollowersScreen</Text>
-    </Screen>
+    <UserListTemplate
+      screenTitle="Seguidores"
+      emptyMessage="Você não tem seguidores ainda."
+      totalText="seguidores"
+      queryKey={QueryKeys.MyFollowersList}
+      button={{
+        title: 'Remover',
+        onPress: followUser => console.log(followUser),
+      }}
+      getUserList={followService.getMyFollowersList}
+    />
   );
 };

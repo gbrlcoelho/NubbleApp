@@ -1,12 +1,18 @@
 import React from 'react';
 
-import {Screen, Text} from '@components';
-import {AppScreenProps} from '@routes';
+import {UserListTemplate} from '@components';
+import {followService} from '@domain';
+import {QueryKeys} from '@infra';
 
-export const MyFollowingScreen = ({}: AppScreenProps<'MyFollowingScreen'>) => {
+export const MyFollowingScreen = () => {
   return (
-    <Screen flex={1} title="Seguindo">
-      <Text>MyFollowingScreen</Text>
-    </Screen>
+    <UserListTemplate
+      screenTitle="Seguindo"
+      emptyMessage="Você não está seguindo ninguém ainda."
+      totalText="seguindo"
+      queryKey={QueryKeys.MyFollowingList}
+      button={{title: 'Seguindo', onPress: user => console.log(user)}}
+      getUserList={followService.getMyFollowingList}
+    />
   );
 };
