@@ -1,15 +1,25 @@
-import React, {useCallback, useEffect, useRef} from 'react';
+import React, {useCallback, useEffect, useRef, useState} from 'react';
 import {Animated} from 'react-native';
 
-import {useToast, useToastService} from '@services';
+import {
+  ToastPosition,
+  ToastService,
+  useToast,
+  useToastService,
+} from '@services';
 
 import {ToastContent} from './components/ToastContent';
 
 const DEFAULT_DURATION = 2000;
 
 export const Toast = () => {
+  const [toastQueue, setToastQueue] = useState<ToastService['toast'][]>([]);
+  const [currentToast, setCurrentToast] = useState<
+    ToastService['toast'] | null
+  >(null);
   const toast = useToast();
   const {hideToast} = useToastService();
+  const position: ToastPosition = currentToast?.position || 'top';
 
   const fadeAnim = useRef(new Animated.Value(0)).current;
 
@@ -34,23 +44,47 @@ export const Toast = () => {
 
   useEffect(() => {
     if (toast) {
+      setToastQueue(prevQueue => [...prevQueue, toast]);
+    }
+  }, [toast]);
+
+  useEffect(() => {
+    if (toastQueue.length > 0 && !currentToast) {
+      const nextToast = toastQueue[0];
+      setCurrentToast(nextToast);
+      setToastQueue(prevQueue => prevQueue.slice(1));
+
       runEnteringAnimation();
 
       setTimeout(() => {
-        runExitingAnimation(hideToast);
-      }, toast.duration || DEFAULT_DURATION);
+        runExitingAnimation(() => {
+          hideToast();
+          setCurrentToast(null);
+        });
+      }, nextToast?.duration || DEFAULT_DURATION);
     }
-  }, [hideToast, runEnteringAnimation, runExitingAnimation, toast]);
+  }, [
+    toastQueue,
+    currentToast,
+    runEnteringAnimation,
+    runExitingAnimation,
+    hideToast,
+  ]);
 
-  if (!toast) {
+  if (!currentToast) {
     return null;
   }
 
   return (
     <Animated.View
       testID="toast-message"
-      style={{position: 'absolute', alignSelf: 'center', opacity: fadeAnim}}>
-      <ToastContent toast={toast} />
+      style={{
+        position: 'absolute',
+        alignSelf: 'center',
+        opacity: fadeAnim,
+        [position]: 100,
+      }}>
+      <ToastContent toast={currentToast} hideToast={hideToast} />
     </Animated.View>
   );
 };

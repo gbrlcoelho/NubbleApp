@@ -1,28 +1,50 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Dimensions} from 'react-native';
 
 import {Box, BoxProps, Icon, IconProps, Text} from '@components';
-import {ToastPosition, ToastType} from '@services';
+import {ToastType} from '@services';
 import {$shadowProps} from '@theme';
 
 import {ToastContentProps} from './ToastContentProps';
 
 const MAX_WIDTH = Dimensions.get('screen').width * 0.9;
 
-export const ToastContent = ({toast}: ToastContentProps) => {
-  const position: ToastPosition = toast?.position || 'top';
-  const type: ToastType = toast?.type || 'success';
+export const ToastContent = ({
+  toast: currentToast,
+  hideToast,
+}: ToastContentProps) => {
+  const [actionCalled, setActionCalled] = useState(false);
+  const type: ToastType = currentToast?.type || 'success';
+
+  const handleActionPress = () => {
+    if (!actionCalled) {
+      setActionCalled(true);
+      currentToast?.action?.onPress();
+      hideToast();
+    }
+  };
 
   return (
-    <Box {...$boxStyle} style={[{[position]: 100}, $shadowProps]}>
+    <Box {...$boxStyle} style={$shadowProps}>
       <Icon {...mapTypeToIcon[type]} />
       <Text
         style={{flexShrink: 1}}
         marginLeft="s16"
         preset="paragraphMedium"
         bold>
-        {toast?.message}
+        {currentToast?.message}
       </Text>
+      {currentToast?.action && (
+        <Text
+          disabled={actionCalled}
+          marginLeft="s8"
+          preset="paragraphMedium"
+          color="marked"
+          bold
+          onPress={handleActionPress}>
+          {currentToast.action.title}
+        </Text>
+      )}
     </Box>
   );
 };
