@@ -39,3 +39,4 @@ export {useReactToPost} from './PostReaction/useCases/useReactToPost';
 export {followApi} from './Follow/followApi';
 export {followService} from './Follow/followService';
 export type {FollowUser} from './Follow/followTypes';
+export {useFollowUser} from './Follow/useCases/useFollowUser';
