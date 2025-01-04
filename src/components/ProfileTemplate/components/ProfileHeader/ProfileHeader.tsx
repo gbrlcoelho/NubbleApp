@@ -34,6 +34,7 @@ export const ProfileHeader = ({
           followersCount={userDetails.meta.followersCount}
           followingCount={userDetails.meta.followingCount}
           publicationsCount={publicationsCount}
+          isMyProfile={isMyProfile}
         />
         {isMyProfile ? (
           <Box position="absolute" alignSelf="flex-end">

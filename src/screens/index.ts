@@ -10,6 +10,8 @@ export {EditPasswordScreen} from './app/EditPasswordScreen/EditPasswordScreen';
 export {EditProfileScreen} from './app/EditProfileScreen/EditProfileScreen';
 export {FavoritesScreen} from './app/FavoritesScreen/FavoritesScreen';
 export {HomeScreen} from './app/HomeScreen/HomeScreen';
+export {MyFollowersScreen} from './app/MyFollowersScreen/MyFollowersScreen';
+export {MyFollowingScreen} from './app/MyFollowingScreen/MyFollowingScreen';
 export {MyProfileScreen} from './app/MyProfileScreen/MyProfileScreen';
 export {NewPostScreen} from './app/NewPostScreen/NewPostScreen';
 export {PostCommentScreen} from './app/PostCommentScreen/PostCommentScreen';

@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+
 def pascal_case?(str)
   str =~ /^[A-Z][a-zA-Z]*$/
 end

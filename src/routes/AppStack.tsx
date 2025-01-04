@@ -10,6 +10,8 @@ import {
   EditEmailScreen,
   EditPasswordScreen,
   EditProfileScreen,
+  MyFollowersScreen,
+  MyFollowingScreen,
   PostCommentScreen,
   ProfileScreen,
   PublishPostScreen,
@@ -29,6 +31,8 @@ export type AppStackParamList = {
   EditProfileScreen: {userId: number};
   EditEmailScreen: {userId: number};
   EditPasswordScreen: {userId: number};
+  MyFollowingScreen: undefined;
+  MyFollowersScreen: undefined;
 };
 
 const Stack = createNativeStackNavigator<AppStackParamList>();
@@ -58,6 +62,8 @@ export const AppStack = ({
       <Stack.Screen name="EditProfileScreen" component={EditProfileScreen} />
       <Stack.Screen name="EditEmailScreen" component={EditEmailScreen} />
       <Stack.Screen name="EditPasswordScreen" component={EditPasswordScreen} />
+      <Stack.Screen name="MyFollowingScreen" component={MyFollowingScreen} />
+      <Stack.Screen name="MyFollowersScreen" component={MyFollowersScreen} />
     </Stack.Navigator>
   );
 };
