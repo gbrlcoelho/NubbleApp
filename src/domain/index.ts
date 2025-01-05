@@ -19,6 +19,7 @@ export {usePostCommentCreate} from './PostComment/useCases/usePostCommentCreate'
 export {usePostCommentList} from './PostComment/useCases/usePostCommentList';
 export {usePostCommentRemove} from './PostComment/useCases/usePostCommentRemove';
 
+export {useSaveNotificationToken} from './User/useCases/useSaveNotificationToken';
 export {useUserGetById} from './User/useCases/useUserGetById';
 export {useUserSearch} from './User/useCases/useUserSearch';
 export {useUserUpdate} from './User/useCases/useUserUpdate';

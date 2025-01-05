@@ -4,7 +4,7 @@ export type PermissionStatus =
   | 'never_ask_again'
   | 'unavailable';
 
-export type PermissionName = 'photoLibrary' | 'camera';
+export type PermissionName = 'photoLibrary' | 'camera' | 'notification';
 
 export interface PermissionService {
   request: (name: PermissionName) => Promise<PermissionStatus>;

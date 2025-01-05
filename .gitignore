@@ -21,6 +21,7 @@ DerivedData
 *.ipa
 *.xcuserstate
 ios/.xcode.env.local
+GoogleService-Info.plist
 
 # Android/IntelliJ
 #
@@ -54,6 +55,7 @@ yarn-error.log
 **/fastlane/test_output
 
 google-service-account.json
+google-services.json
 
 # Bundle artifact
 *.jsbundle
