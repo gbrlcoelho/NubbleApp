@@ -3,6 +3,7 @@ import React from 'react';
 import {NavigatorScreenParams} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
+import {useSaveNotificationToken} from '@domain';
 import {AppTabBottomTabParamList, AppTabNavigator} from '@routes';
 import {
   CameraScreen,
@@ -44,6 +45,8 @@ interface AppStackProps {
 export const AppStack = ({
   initialRouteName = 'AppTabNavigator',
 }: AppStackProps) => {
+  useSaveNotificationToken();
+
   return (
     <Stack.Navigator
       screenOptions={{
