@@ -21,8 +21,22 @@ const updateUser = async (params: UpdateUserParams) => {
   return response.data;
 };
 
+const addNotificationToken = async (token: string): Promise<string> => {
+  const response = await api.post<string>(`${USER_PATH}/notification-token`, {
+    token,
+  });
+  return response.data;
+};
+
+const deleteNotificationToken = async (): Promise<string> => {
+  const response = await api.delete<string>(`${USER_PATH}/notification-token`);
+  return response.data;
+};
+
 export const userApi = {
   getById,
   getList,
   updateUser,
+  addNotificationToken,
+  deleteNotificationToken,
 };

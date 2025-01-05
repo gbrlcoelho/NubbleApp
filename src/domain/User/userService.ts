@@ -55,8 +55,15 @@ const updateUser = async (
   return userAdapter.toUser(userAPI);
 };
 
+const addNotificationToken = (token: string) =>
+  userApi.addNotificationToken(token);
+
+const deleteNotificationToken = () => userApi.deleteNotificationToken();
+
 export const userService = {
   getById,
   searchUser,
   updateUser,
+  addNotificationToken,
+  deleteNotificationToken,
 };
