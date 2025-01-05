@@ -19,7 +19,7 @@ import {
   SearchScreen,
   SettingsScreen,
 } from '@screens';
-import {useNotificationAction} from '@services';
+import {useNotificationAction, usePermission} from '@services';
 
 export type AppStackParamList = {
   AppTabNavigator: NavigatorScreenParams<AppTabBottomTabParamList>;
@@ -46,6 +46,7 @@ interface AppStackProps {
 export const AppStack = ({
   initialRouteName = 'AppTabNavigator',
 }: AppStackProps) => {
+  usePermission('notification');
   useSaveNotificationToken();
   useNotificationAction();
 
